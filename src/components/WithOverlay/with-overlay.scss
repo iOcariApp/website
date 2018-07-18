@@ -1,0 +1,45 @@
+.main {
+	position: fixed;
+	top: 0%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	background-color: white;
+	text-align: center;
+	max-width: 350px;
+	padding: 30px 26px;
+	border-radius: 11px;
+	color: #434343;
+
+	z-index: 1;
+
+	animation-name: appear;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+
+	span {
+		color: #19586c;
+		font-weight: bold;
+	}
+
+	p {
+		margin-top: 10px;
+	}
+}
+
+@keyframes appear {
+	from {
+		top: 0%;
+	}
+	to {
+		top: 50%;
+	}
+}
+
+.pc {
+	display: block;
+	margin: 0 auto 10px;
+	width: 60px;
+	height: 50px;
+	background-color: grey;
+}

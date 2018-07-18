@@ -92,6 +92,7 @@ module.exports = {
       pages: path.resolve(__dirname, "../src/pages/"),
       utils: path.resolve(__dirname, "../src/utils/"),
       db: path.resolve(__dirname, "../src/database.js"),
+      routes: path.resolve(__dirname, "../src/routes/"),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

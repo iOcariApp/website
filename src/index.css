@@ -1,0 +1,15 @@
+body {
+	font-family: Segoe UI;
+}
+
+h1 {
+	font-size: 50px;
+  font-weight: 500;
+  line-height: 67px;
+}
+
+h4 {
+	font-size: 16px;
+  font-weight: 500;
+	line-height: 24px;
+}
