@@ -30,7 +30,7 @@ const Header = () => (
 				<p>
 					Apúntate a la Beta y conviértete en pionero<br />¡plazas límitadas!
 				</p>
-				<div className={style["email-form"]}>{/*<EmailForm />*/}</div>
+				<div className={style["email-form"]}><EmailForm /></div>
 				<p>Próximamente en</p>
 				<div className={style.store} />
 				<div className={style.store} />

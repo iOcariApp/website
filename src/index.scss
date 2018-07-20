@@ -1,6 +1,10 @@
 @import "~components/variables.scss";
 
 :global {
+	* {
+		box-sizing: border-box;
+	}
+	
 	body {
 		font-family: Segoe UI;
 	}

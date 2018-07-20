@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .main {
 	position: fixed;
 	top: 0%;
@@ -6,8 +8,8 @@
 
 	background-color: white;
 	text-align: center;
-	max-width: 350px;
-	padding: 30px 26px;
+	width: 318px;
+	padding: 13px 16px;
 	border-radius: 11px;
 	color: #434343;
 
@@ -17,12 +19,17 @@
 	animation-duration: 0.3s;
 	animation-fill-mode: forwards;
 
+	box-shadow: 0 3px 6px rgba(black, 0.16);
+
 	span {
 		color: #19586c;
+		font-size: 18px;
 		font-weight: bold;
 	}
 
 	p {
+		color: #434343;
+		font-size: 16px;
 		margin-top: 10px;
 	}
 }
@@ -36,10 +43,42 @@
 	}
 }
 
-.pc {
+.icon {
 	display: block;
 	margin: 0 auto 10px;
-	width: 60px;
-	height: 50px;
-	background-color: grey;
+	width: 82px;
+	height: auto;
+}
+
+.button {
+	margin-top: 15px;
+	width: 140px;
+	height: 40px;
+	font-size: 18px;
+}
+
+@media screen and (min-width: $lg-anchor) {
+	.main {
+		width: 545px;
+		font-size: 20px;
+		padding: 26px 32px;
+
+		span {
+			font-size: 24px;
+		}
+
+		p {
+			font-size: 22px;
+		}
+	}
+
+	.icon {
+		width: 92px;
+	}
+
+	.button {
+		width: 164px;
+		height: 52px;
+		font-size: 20px;
+	}
 }

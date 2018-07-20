@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./button.scss";
 
-const Button = ({ children, styleButton, ...rest }) => (
-	<button className={`${styleButton} ${style.main}`} {...rest}>{children}</button>
+const Button = ({ children, className, ...rest }) => (
+	<button className={`${className} ${style.main}`} {...rest}>{children}</button>
 );
 
 Button.propTypes = {
-	styleButton: PropTypes.string,
+	className: PropTypes.string,
 	children: PropTypes.string,
 }
 

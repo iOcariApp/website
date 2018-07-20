@@ -23,7 +23,7 @@ const LargeNavBar = ({ sticky }) => (
 						{route.label}
 					</Link>
 				))}
-				<Button styleButton={style.button}>ÚNETE</Button>
+				<Button className={style.button}>ÚNETE</Button>
 			</div>
 		</nav>
 	</div>

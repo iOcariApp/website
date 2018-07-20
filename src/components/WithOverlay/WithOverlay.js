@@ -4,6 +4,7 @@ import style from "./with-overlay.scss";
 
 import OverlayContext from "contexts/OverlayContext";
 
+import icon from "./icon.svg";
 import Button from "components/Button";
 
 class WithOverlay extends React.Component {
@@ -32,13 +33,13 @@ class WithOverlay extends React.Component {
 			<Fragment>
 				{show && (
 					<div className={style.main}>
-						<div className={style.pc} />
+						<img className={style.icon} src={icon} alt="Computer icon with logo iOcari"/>
 						<span>¡Información recibida!</span>
 						<p>
 							Espera el santo y seña muy pronto así que atento a nuestras
 							comunicaciones por redes sociales y e-mail.
 						</p>
-						<Button style={{ marginTop: 25 }} onClick={this.hide}>¡VALE!</Button>
+						<Button className={style.button} onClick={this.hide}>¡VALE!</Button>
 					</div>
 				)}
 				<OverlayContext.Provider value={{ showOverlay: this.show, hideOverlay: this.hide }}>

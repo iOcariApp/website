@@ -8,15 +8,15 @@ import Button from "components/Button";
 const EmailForm = () => (
 	<OverlayContext.Consumer>
 		{({ showOverlay }) => (
-			<Fragment>
+			<div className={style.main}>
 				<input className={style.input} type="email" placeholder="Correo" />
 				<Button
-					style={{ padding: "12px 15px", borderRadius: "0 6px 6px 0" }}
+					className={style.button}
 					onClick={showOverlay}
 				>
 					¡A POR ELLO!
 				</Button>
-			</Fragment>
+			</div>
 		)}
 	</OverlayContext.Consumer>
 );
