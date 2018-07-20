@@ -1,3 +1,20 @@
-.main {
-	width: 200px;
+@import "../variables.scss";
+
+.container {
+	height: 100%;
+
+	.st0 {
+		fill: #f50057;
+	}
+
+	.st1 {
+		fill: #ffffff;
+	}
+
+	&.secondary {
+		.st1 {
+			fill: $secondary-color;
+		}
+	}
 }
+

@@ -1,0 +1,84 @@
+@import "../variables";
+
+$menu-height: 71px;
+$collapsable-menu-bg: #f1f4f5;
+$collapsable-menu-margin: 9px;
+
+.habak {
+	width: 200px;
+	height: 299px;
+	background-color: pink;
+}
+
+.main {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: $menu-height;
+	background-color: white;
+	padding: 20px 22px;
+	box-sizing: border-box;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	display: inline-block;
+	width: auto;
+	height: 45px;
+	position: relative;
+	top: -5px;
+
+	:global {
+		.st1 {
+			fill: $secondary-color;
+		}
+	}
+}
+
+.hamburguer-icon {
+	position: absolute;
+	top: 5px;
+	right: $collapsable-menu-margin;
+	padding: 21px 13px;
+
+	> div {
+		width: 36px;
+		height: 5px;
+		background-color: $secondary-color;
+
+		+ div {
+			margin-top: 6px;
+		}
+	}
+}
+
+.hamburguer-icon-open {
+	@extend .hamburguer-icon;
+	background-color: $collapsable-menu-bg;
+}
+
+.collapsable-menu {
+	background-color: $collapsable-menu-bg;
+	position: fixed;
+	top: calc(#{$menu-height} - 1px);
+	width: calc(100% - 18px);
+	margin: 0 #{$collapsable-menu-margin};
+	padding: 0 11px;
+	box-sizing: border-box;
+
+	a {
+		font-size: 18px;
+		height: 63px;
+		color: #8d8d8d;
+		text-decoration: none;
+		display: block;
+		line-height: 63px;
+		text-align: center;
+
+		+ a {
+			border-top: 1px solid rgba($secondary-color, 0.38);
+		}
+	}
+}

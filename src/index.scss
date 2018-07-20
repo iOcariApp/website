@@ -1,0 +1,57 @@
+@import "~components/variables.scss";
+
+:global {
+	body {
+		font-family: Segoe UI;
+	}
+
+	h1 {
+		font-size: 50px;
+	  font-weight: 500;
+	  line-height: 67px;
+	}
+
+	h4 {
+		font-size: 16px;
+	  font-weight: 500;
+		line-height: 24px;
+	}
+
+	.sm {
+		display: block;
+	}
+
+	.md {
+		display: none;
+	}
+
+	.lg {
+		display: none;
+	}
+
+	.xl {
+		display: none;
+	}
+
+	@media screen and (min-width: $md-anchor) {
+		.sm {
+			display: none;
+		}
+
+		.md {
+			display: block;
+		}
+	}
+
+	@media screen and (min-width: $lg-anchor) {
+		.lg {
+			display: block;
+		}
+	}
+
+	@media screen and (min-width: $xl-anchor) {
+		.xl {
+			display: block;
+		}
+	}
+}

@@ -1,16 +1,40 @@
-import React from "react";
-import style from "./nav-bar.scss";
+import React, { Fragment } from "react";
+import style from "./nav-bar.cssmodule.scss";
 
-import { Link } from "react-router-dom";
+import SmallNavBar from "../SmallNavBar";
+import LargeNavBar from "../LargeNavBar";
 
-import { routes } from "routes";
-import Button from "components/Button";
+class NavBar extends React.PureComponent {
+	state = { sticky: false };
 
-const NavBar = () => (
-	<nav className={style.main}>
-		{routes.slice(1).map(route => <Link key={`navbar-${route.label}`} to={route.path}>{route.label}</Link>)}
-		<Button style={{ marginLeft: 15 }}>ÚNETE</Button>
-	</nav>
-);
+	componentDidMount = () => {
+		window.addEventListener("scroll", this.checkSticky);
+	};
+
+	componentWillUnmount = () => {
+		window.removeEventListener("scroll", this.checkSticky);
+	};
+
+	checkSticky = () => {
+		const { sticky } = this.state;
+		const newSticky = window.pageYOffset > 80;
+		if (newSticky !== sticky) this.setState({ sticky: newSticky });
+	};
+
+	render = () => {
+		const { sticky } = this.state;
+
+		return (
+			<Fragment>
+				<div className="sm">
+					<SmallNavBar />
+				</div>
+				<div className="md">
+					<LargeNavBar sticky={sticky} />
+				</div>
+			</Fragment>
+		);
+	};
+}
 
 export default NavBar;

@@ -1,0 +1,67 @@
+@import "../variables";
+
+$menu-height: 100px;
+
+.fake {
+	width: 100%;
+	height: $menu-height;
+}
+
+.main {
+	width: 100%;
+	height: $menu-height;
+	padding: 15px 25px;
+	box-sizing: border-box;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sticky {
+	@extend .main;
+	position: fixed;
+	top: 0;
+	background-color: white;
+
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+
+	.menu {
+		a {
+			color: $secondary-color;
+		}
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.logo {
+	display: inline-block;
+	width: auto;
+	height: 45px;
+}
+
+.menu {
+	a {
+		color: white;
+		font-size: 14px;
+		text-decoration: none;
+
+		+ a {
+			margin-left: 20px;
+		}
+	}
+}
+
+.button {
+	margin-left: 27px;
+}
