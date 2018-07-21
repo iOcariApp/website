@@ -25,7 +25,7 @@ class SmallNavBar extends React.Component {
 		const hamburguerClass = getFullClass("hamburguer-icon", "-open", open);
 
 		return (
-			<Fragment>
+			<div className={style.fake}>
 				<nav className={`${style.main}`}>
 					<div className={style.logo}>
 						<Link to="/">
@@ -47,7 +47,7 @@ class SmallNavBar extends React.Component {
 						))}
 					</div>
 				)}
-			</Fragment>
+			</div>
 		);
 	}
 }

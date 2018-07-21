@@ -3,6 +3,9 @@ import style from "./header.scss";
 
 import { Link } from "react-router-dom";
 
+import googlePlay from "./google-play.svg";
+import appStore from "./app-store.svg";
+
 import NavBar from "components/NavBar";
 import EmailForm from "components/EmailForm";
 
@@ -28,12 +31,12 @@ const Header = () => (
 					lugar del mundo.
 				</h4>
 				<p>
-					Apúntate a la Beta y conviértete en pionero<br />¡plazas límitadas!
+					Apúntate a la Beta y conviértete en pionero ¡plazas límitadas!
 				</p>
 				<div className={style["email-form"]}><EmailForm /></div>
-				<p>Próximamente en</p>
-				<div className={style.store} />
-				<div className={style.store} />
+				<p className={style.soon}>Próximamente en</p>
+				<img className={style.store} src={googlePlay} alt="Google play icon" />
+				<img className={style.store} src={appStore} alt="App store icon" />
 			</div>
 			<div className={style.mobile} />
 		</div>

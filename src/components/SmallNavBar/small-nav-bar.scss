@@ -4,10 +4,9 @@ $menu-height: 71px;
 $collapsable-menu-bg: #f1f4f5;
 $collapsable-menu-margin: 9px;
 
-.habak {
-	width: 200px;
-	height: 299px;
-	background-color: pink;
+.fake {
+	width: 100%;
+	height: $menu-height;
 }
 
 .main {
