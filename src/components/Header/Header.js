@@ -30,13 +30,19 @@ const Header = () => (
 					Partidas a tus juegos favoritos, con gente cerca de tí, en cualquier
 					lugar del mundo.
 				</h4>
-				<p>
-					Apúntate a la Beta y conviértete en pionero ¡plazas límitadas!
-				</p>
-				<div className={style["email-form"]}><EmailForm /></div>
+				<p>Apúntate a la Beta y conviértete en pionero ¡plazas límitadas!</p>
+				<div className={style["email-form"]}>
+					<EmailForm />
+				</div>
 				<p className={style.soon}>Próximamente en</p>
-				<img className={style.store} src={googlePlay} alt="Google play icon" />
-				<img className={style.store} src={appStore} alt="App store icon" />
+				<div className={style.stores}>
+					<img
+						className={style.store}
+						src={googlePlay}
+						alt="Google play icon"
+					/>
+					<img className={style.store} src={appStore} alt="App store icon" />
+				</div>
 			</div>
 			<div className={style.mobile} />
 		</div>
