@@ -1,0 +1,75 @@
+@import "../variables.scss";
+
+.main {
+	background: linear-gradient(rgba(2, 119, 189, 0.84), rgba(2, 119, 189, 0.84)),
+		url("./bg.png");
+	color: white;
+	padding: 35px 18px 55px;
+	text-align: center;
+}
+
+.sectionTitle {
+	margin-bottom: 30px;
+}
+
+.text {
+	font-size: 16px;
+	margin-bottom: 50px;
+	line-height: 21px;
+}
+
+.button {
+	width: 218px;
+	height: 52px;
+	font-size: 18px;
+}
+
+@media screen and (min-width: $md-anchor) {
+	.main {
+		padding: 55px 0 35px;
+	}
+
+	.text {
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 18px;
+		line-height: 28px;
+	}
+
+	.button {
+		width: 187px;
+	}
+}
+
+@media screen and (min-width: $lg-anchor) {
+	.sectionTitle {
+		font-size: 40px;
+	}
+
+	.text {
+		width: 664px;
+		font-size: 20px;
+	}
+}
+
+@media screen and (min-width: $xxl-anchor) {
+	.main {
+		padding: 60px 0 50px;
+	}
+
+	.sectionTitle {
+		font-size: 43px;
+	}
+
+	.text {
+		width: 860px;
+		font-size: 24px;
+	}
+
+	.button {
+		width: 260px;
+		height: 64px;
+		font-size: 20px;
+	}
+}

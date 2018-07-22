@@ -4,6 +4,7 @@ import style from "./home.scss";
 import WithOverlay from "components/WithOverlay";
 import Header from "components/Header";
 import Features from "components/Features";
+import DevCorner from "components/DevCorner";
 
 const Home = () => (
 	<div className={style.main}>
@@ -11,6 +12,7 @@ const Home = () => (
 			<Header />
 		</WithOverlay>
 		<Features />
+		<DevCorner />
 	</div>
 );
 
