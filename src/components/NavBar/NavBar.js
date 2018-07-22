@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import style from "./nav-bar.cssmodule.scss";
 
+import { withRouter } from "react-router-dom";
+import { routes } from "routes";
+
 import SmallNavBar from "../SmallNavBar";
 import LargeNavBar from "../LargeNavBar";
 
@@ -13,6 +16,11 @@ class NavBar extends React.PureComponent {
 
 	componentWillUnmount = () => {
 		window.removeEventListener("scroll", this.checkSticky);
+	};
+
+	fillBg = () => {
+		const { match } = this.props;
+		return routes.findIndex((route) => route.path === match.path) > 2;
 	};
 
 	checkSticky = () => {
@@ -30,11 +38,11 @@ class NavBar extends React.PureComponent {
 					<SmallNavBar />
 				</div>
 				<div className="md">
-					<LargeNavBar sticky={sticky} />
+					<LargeNavBar solid={this.fillBg()} sticky={sticky} />
 				</div>
 			</Fragment>
 		);
 	};
 }
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -16,21 +16,21 @@ $menu-height: 100px;
 	z-index: $navbar-z-index;
 }
 
-.sticky {
-	@extend .main;
-	position: fixed;
-	top: 0;
-	background-color: white;
-
-	animation-name: fadeIn;
-	animation-duration: 0.5s;
-	animation-fill-mode: forwards;
-
+.solid {
 	.menu {
 		a {
 			color: $secondary-color;
 		}
 	}
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
 }
 
 .content {
@@ -70,6 +70,11 @@ $menu-height: 100px;
 			margin-left: 20px;
 		}
 	}
+
+	.activeLink {
+		padding-bottom: 12px;
+		border-bottom: 6px solid #03a9f4;
+	}
 }
 
 .button {
@@ -89,5 +94,9 @@ $menu-height: 100px;
 				margin-left: 30px;
 			}
 		}
+	}
+
+	.button {
+		font-size: 16px;
 	}
 }
