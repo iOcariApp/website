@@ -1,0 +1,87 @@
+@import "../variables.scss";
+
+$md-max-width-card: 356px;
+$lg-max-width-card: 400px;
+$xxl-max-width-card: 540px;
+
+.main {
+	position: relative;
+	margin-top: 40px;
+	padding: 0 17px 50px;
+	color: #606060;
+}
+
+.cards {
+	display: grid;
+	grid-gap: 15px;
+	justify-content: center;
+	align-items: start;
+}
+
+.card {
+	max-width: $md-max-width-card;
+}
+
+@media screen and (min-width: 563px) {
+	.sectionTitle {
+		text-align: center;
+	}
+}
+
+@media screen and (min-width: $md-anchor) {
+	.cards {
+		grid-template-columns: repeat(auto-fill, $md-max-width-card);
+	}
+
+	.card {
+		max-width: initial;
+	}
+}
+
+@media screen and (min-width: $lg-anchor) {
+	.cards {
+		grid-template-columns: repeat(auto-fill, $lg-max-width-card);
+	}
+}
+
+@media screen and (min-width: $xl-anchor) {
+	.main {
+		margin-top: 100px;
+		padding-bottom: 50px;
+		padding-left: 29%;
+	}
+
+	.sectionTitle {
+		text-align: left;
+	}
+
+	.glassGirl {
+		width: 50%;
+		position: absolute;
+		bottom: 0;
+		left: -80px;
+		z-index: -1;
+	}
+
+	.cards {
+		grid-gap: 30px;
+		justify-content: start;
+	}
+}
+
+@media screen and (min-width: 1450px) {
+	.main {
+		padding-left: 33%;
+		padding-bottom: 80px;
+	}
+}
+
+@media screen and (min-width: 1700px) {
+	.main {
+		padding-left: 33%;
+	}
+
+	.cards {
+		grid-template-columns: repeat(auto-fill, $xxl-max-width-card);
+	}
+}

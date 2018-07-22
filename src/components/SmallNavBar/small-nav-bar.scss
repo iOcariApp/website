@@ -67,6 +67,8 @@ $collapsable-menu-margin: 9px;
 	margin: 0 #{$collapsable-menu-margin};
 	padding: 0 11px;
 
+	z-index: $navbar-z-index;
+
 	a {
 		font-size: 18px;
 		height: 63px;

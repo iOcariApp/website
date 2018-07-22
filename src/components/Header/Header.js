@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import googlePlay from "./google-play.svg";
 import appStore from "./app-store.svg";
-import mobile from "./mobile.svg";
+import mobile from "./mobile.png";
 
 import NavBar from "components/NavBar";
 import EmailForm from "components/EmailForm";
