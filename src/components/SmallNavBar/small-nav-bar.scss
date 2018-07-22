@@ -19,6 +19,8 @@ $collapsable-menu-margin: 9px;
 
 	display: flex;
 	justify-content: space-between;
+
+	z-index: $navbar-z-index;
 }
 
 .logo {

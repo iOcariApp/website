@@ -2,8 +2,13 @@
 
 .main {
 	position: relative;
-	height: 628px;
+	height: 730px;
 	background: linear-gradient(#2b3450, #0a7884);
+}
+
+.maxWidth {
+	max-width: 1024px;
+	margin: 0 auto;
 }
 
 .diagonal {
@@ -22,31 +27,51 @@
 	margin: 0 auto;
 
 	p {
-		font-size: 16px;
 		line-height: 21px;
 	}
+}
 
-	.emailForm {
-		margin-top: 25px;
-		margin-bottom: 17px;
+.emailForm {
+	margin-top: 25px;
+	margin-bottom: 17px;
+}
+
+.soon {
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 17px;
+}
+
+.stores {
+	text-align: center;
+}
+
+.store {
+	display: block;
+	margin: 0 auto;
+	height: 45px;
+
+	+ .store {
+		margin-top: 5px;
 	}
+}
 
-	.soon {
-		font-size: 16px;
-		font-weight: 500;
-		text-align: center;
-		margin-bottom: 17px;
-	}
+.mobile {
+	display: none;
+}
 
-	.stores {
-		text-align: center;
+@media (min-width: $sm-anchor) {
+	.main {
+		height: 628px;
 	}
 
 	.store {
 		display: inline-block;
-		height: 45px;
+		margin: 0;
 
 		+ .store {
+			margin-top: 0;
 			margin-left: 20px;
 		}
 	}
@@ -54,14 +79,11 @@
 
 @media (min-width: $md-anchor) {
 	.main {
-		background-color: #013a6b;
 		height: 724px;
-		position: relative;
 	}
 
 	.content {
-		margin-top: 50px;
-
+		margin-top: 40px;
 		> div {
 			display: inline-block;
 		}
@@ -71,40 +93,80 @@
 		width: 370px;
 
 		h1 {
-			margin-bottom: 25px;
+			font-size: 48px;
 		}
+
 		h4,
 		p {
-			margin-bottom: 16px;
-		}
-		p {
-			line-height: 21px;
+			font-size: 18px;
 		}
 	}
 
-	.email-form {
-		margin: 25px 0;
+	.emailForm {
+		margin-top: 35px;
+		margin-bottom: 27px;
+	}
+
+	.soon {
+		text-align: left;
+	}
+
+	.stores {
+		text-align: left;
 	}
 
 	.store {
-		width: 105px;
-		height: 32px;
-		display: inline-block;
-		background-color: black;
-		border-radius: 4px;
+		height: 36px;
 
 		+ .store {
-			margin-left: 20px;
+			margin-left: 13px;
 		}
 	}
 
 	.mobile {
-		float: right;
-		margin-right: 150px;
-		width: 280px;
-		height: 490px;
 		display: block;
-		background-color: white;
-		border-radius: 30px;
+		float: right;
+		width: 248px;
+		margin-right: 35px;
+		border-radius: 32px;
+		box-shadow: 0 35px 150px 0 #0e0e4e;
+	}
+}
+
+@media screen and (min-width: $lg-anchor) {
+	.main {
+		height: 760px;
+	}
+	
+	.content {
+		padding: 30px 46px 0;
+	}
+
+	.cta {
+		width: 430px;
+
+		h1 {
+			font-size: 51px;
+			margin-bottom: 38px;
+		}
+
+		h4,
+		p {
+			font-size: 22px;
+		}
+
+		h4 {
+			margin-bottom: 24px;
+		}
+	}
+
+	.store {
+		height: 41px;
+	}
+
+	.mobile {
+		width: 281px;
+		position: relative;
+		top: -35px;
 	}
 }

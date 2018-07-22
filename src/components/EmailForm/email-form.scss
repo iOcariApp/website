@@ -1,15 +1,25 @@
 @import "../variables.scss";
 
+$sm-height: 52px;
+$sm-font-size: 18px;
+$sm-button-width: 165px;
+
+$md-height: 40px;
+$md-font-size: 16px;
+$md-button-width: 140px;
+
+$lg-height: 50px;
+
 .input {
 	width: 100%;
-	height: 52px;
+	height: $sm-height;
 
 	border: none;
 	border-radius: 7px;
 
 	padding: 0 15px;
 
-	font-size: 18px;
+	font-size: $sm-font-size;
 }
 
 .button {
@@ -17,11 +27,11 @@
 	padding: 0;
 	margin: 17px auto 0;
 	
-	width: 165px;
-	height: 52px;
+	width: $sm-button-width;
+	height: $sm-height;
 
 	font-weight: bold;
-	font-size: 18px;
+	font-size: $sm-font-size;
 }
 
 @media screen and (min-width: $md-anchor) {
@@ -33,11 +43,24 @@
 		display: inline-block;
 		border-radius: 6px 0 0 6px;
 		flex: 1;
+
+		height: $md-height;
+		font-size: $md-font-size;
 	}
 
 	.button {
 		display: inline-block;
 		margin-top: 0;
 		border-radius: 0 6px 6px 0;
+
+		width: $md-button-width;
+		height: $md-height;
+		font-size: $md-font-size;
+	}
+}
+
+@media screen and(min-width: $lg-anchor) {
+	.input, .button {
+		height: $lg-height;
 	}
 }
