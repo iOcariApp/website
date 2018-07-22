@@ -7,5 +7,12 @@ $md-anchor: 768px;
 $lg-anchor: 1024px;
 $xl-anchor: 1200px;
 
+$max-width-header: 1024px;
+
 $overlay-z-index: 1;
 $navbar-z-index: 2;
+
+.maxWidthHeader {
+	max-width: $max-width-header;
+	margin: 0 auto;
+}

@@ -12,18 +12,20 @@ import Button from "components/Button";
 const LargeNavBar = ({ sticky }) => (
 	<div className={style.fake}>
 		<nav className={sticky ? style.sticky : style.main}>
-			<div className={style.logo}>
-				<Link to="/">
-					<Logo color={sticky ? "secondary" : "white"} />
-				</Link>
-			</div>
-			<div className={style.menu}>
-				{routes.slice(1).map(route => (
-					<Link key={`navbar-${route.label}`} to={route.path}>
-						{route.label}
+			<div className={style.content}>
+				<div className={style.logo}>
+					<Link to="/">
+						<Logo color={sticky ? "secondary" : "white"} />
 					</Link>
-				))}
-				<Button className={style.button}>ÚNETE</Button>
+				</div>
+				<div className={style.menu}>
+					{routes.slice(1).map(route => (
+						<Link key={`navbar-${route.label}`} to={route.path}>
+							{route.label}
+						</Link>
+					))}
+					<Button className={style.button}>ÚNETE</Button>
+				</div>
 			</div>
 		</nav>
 	</div>

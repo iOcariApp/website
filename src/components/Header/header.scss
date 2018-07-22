@@ -6,11 +6,6 @@
 	background: linear-gradient(#2b3450, #0a7884);
 }
 
-.maxWidth {
-	max-width: 1024px;
-	margin: 0 auto;
-}
-
 .diagonal {
 	position: absolute;
 	bottom: 0;
@@ -19,6 +14,7 @@
 }
 
 .content {
+	@extend .maxWidthHeader;
 	padding: 30px 25px 0;
 }
 
@@ -137,7 +133,7 @@
 	.main {
 		height: 760px;
 	}
-	
+
 	.content {
 		padding: 30px 46px 0;
 	}

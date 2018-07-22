@@ -9,12 +9,9 @@ $menu-height: 100px;
 
 .main {
 	width: 100%;
+
 	height: $menu-height;
 	padding: 15px 25px;
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 
 	z-index: $navbar-z-index;
 }
@@ -34,6 +31,18 @@ $menu-height: 100px;
 			color: $secondary-color;
 		}
 	}
+}
+
+.content {
+	@extend .maxWidthHeader;
+
+	transform: translateY(-50%);
+	position: relative;
+	top: 50%;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 @keyframes fadeIn {
