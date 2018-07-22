@@ -35,7 +35,7 @@ $collapsable-menu-margin: 9px;
 	}
 }
 
-.hamburguer-icon {
+.hamburguerIcon {
 	position: absolute;
 	top: 3px;
 	right: $collapsable-menu-margin;
@@ -52,12 +52,12 @@ $collapsable-menu-margin: 9px;
 	}
 }
 
-.hamburguer-icon-open {
-	@extend .hamburguer-icon;
+.hamburguerIconOpen {
+	@extend .hamburguerIcon;
 	background-color: $collapsable-menu-bg;
 }
 
-.collapsable-menu {
+.collapsableMenu {
 	background-color: $collapsable-menu-bg;
 	position: fixed;
 	top: calc(#{$menu-height} - 1px);

@@ -22,7 +22,7 @@ class SmallNavBar extends React.Component {
 	render() {
 		const { open } = this.state;
 
-		const hamburguerClass = getFullClass("hamburguer-icon", "-open", open);
+		const hamburguerClass = getFullClass("hamburguerIcon", "Open", open);
 
 		return (
 			<div className={style.fake}>
@@ -39,7 +39,7 @@ class SmallNavBar extends React.Component {
 					</div>
 				</nav>
 				{open && (
-					<div className={style["collapsable-menu"]}>
+					<div className={style.collapsableMenu}>
 						{routes.slice(1).map(route => (
 							<Link key={`navbar-${route.label}`} to={route.path}>
 								{route.label}

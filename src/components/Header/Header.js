@@ -31,7 +31,7 @@ const Header = () => (
 					lugar del mundo.
 				</h4>
 				<p>Apúntate a la Beta y conviértete en pionero ¡plazas límitadas!</p>
-				<div className={style["email-form"]}>
+				<div className={style.emailForm}>
 					<EmailForm />
 				</div>
 				<p className={style.soon}>Próximamente en</p>
