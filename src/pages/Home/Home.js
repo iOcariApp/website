@@ -5,6 +5,7 @@ import WithOverlay from "components/WithOverlay";
 import Header from "components/Header";
 import Features from "components/Features";
 import DevCorner from "components/DevCorner";
+import MobilePreview from "components/MobilePreview";
 
 const Home = () => (
 	<div className={style.main}>
@@ -13,6 +14,7 @@ const Home = () => (
 		</WithOverlay>
 		<Features />
 		<DevCorner />
+		<MobilePreview />
 	</div>
 );
 
