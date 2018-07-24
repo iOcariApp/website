@@ -6,6 +6,7 @@ import Header from "components/Header";
 import Features from "components/Features";
 import DevCorner from "components/DevCorner";
 import MobilePreview from "components/MobilePreview";
+import VideoSection from "components/VideoSection";
 
 const Home = () => (
   <div className={style.main}>
@@ -15,6 +16,7 @@ const Home = () => (
     <Features />
     <DevCorner />
     <MobilePreview />
+    <VideoSection />
   </div>
 );
 

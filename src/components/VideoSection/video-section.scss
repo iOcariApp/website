@@ -1,0 +1,45 @@
+@import "../variables.scss";
+
+.main {
+  padding: 46px 18px;
+  background-color: #0277bd;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: $md-anchor) {
+  .main {
+    padding: 12px 150px;
+  }
+
+  .video {
+    max-width: initial;
+  }
+}
+
+@media screen and (min-width: $lg-anchor) {
+  .main {
+    padding: 30px 250px;
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .main {
+    padding: 30px 350px;
+  }
+}

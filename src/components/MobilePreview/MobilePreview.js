@@ -2,7 +2,6 @@ import React from "react";
 import style from "./mobile-preview.scss";
 
 import arrowRight from "./arrow-right.svg";
-import screen1 from "./screen-1.png";
 
 const screens = Array(5)
   .fill()
