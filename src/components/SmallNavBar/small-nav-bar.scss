@@ -5,81 +5,81 @@ $collapsable-menu-bg: #f1f4f5;
 $collapsable-menu-margin: 9px;
 
 .fake {
-	width: 100%;
-	height: $menu-height;
+  width: 100%;
+  height: $menu-height;
 }
 
 .main {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: $menu-height;
-	background-color: white;
-	padding: 20px 22px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $menu-height;
+  background-color: white;
+  padding: 20px 22px;
 
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-	z-index: $navbar-z-index;
+  z-index: $navbar-z-index;
 }
 
 .logo {
-	display: inline-block;
-	width: auto;
-	height: 45px;
-	position: relative;
-	top: -5px;
+  display: inline-block;
+  width: auto;
+  height: 45px;
+  position: relative;
+  top: -5px;
 
-	:global {
-		.st1 {
-			fill: $secondary-color;
-		}
-	}
+  :global {
+    .st1 {
+      fill: $secondary-color;
+    }
+  }
 }
 
 .hamburguerIcon {
-	position: absolute;
-	top: 3px;
-	right: $collapsable-menu-margin;
-	padding: 21px 13px;
+  position: absolute;
+  top: 3px;
+  right: $collapsable-menu-margin;
+  padding: 21px 13px;
 
-	> div {
-		width: 36px;
-		height: 5px;
-		background-color: $secondary-color;
+  > div {
+    width: 36px;
+    height: 5px;
+    background-color: $secondary-color;
 
-		+ div {
-			margin-top: 6px;
-		}
-	}
+    + div {
+      margin-top: 6px;
+    }
+  }
 }
 
 .hamburguerIconOpen {
-	@extend .hamburguerIcon;
-	background-color: $collapsable-menu-bg;
+  @extend .hamburguerIcon;
+  background-color: $collapsable-menu-bg;
 }
 
 .collapsableMenu {
-	background-color: $collapsable-menu-bg;
-	position: fixed;
-	top: calc(#{$menu-height} - 1px);
-	width: calc(100% - 18px);
-	margin: 0 #{$collapsable-menu-margin};
-	padding: 0 11px;
+  background-color: $collapsable-menu-bg;
+  position: fixed;
+  top: calc(#{$menu-height} - 1px);
+  width: calc(100% - 18px);
+  margin: 0 #{$collapsable-menu-margin};
+  padding: 0 11px;
 
-	z-index: $navbar-z-index;
+  z-index: $navbar-z-index;
 
-	a {
-		font-size: 18px;
-		height: 63px;
-		color: #8d8d8d;
-		text-decoration: none;
-		display: block;
-		line-height: 63px;
-		text-align: center;
+  a {
+    font-size: 18px;
+    height: 63px;
+    color: #8d8d8d;
+    text-decoration: none;
+    display: block;
+    line-height: 63px;
+    text-align: center;
 
-		+ a {
-			border-top: 1px solid rgba($secondary-color, 0.38);
-		}
-	}
+    + a {
+      border-top: 1px solid rgba($secondary-color, 0.38);
+    }
+  }
 }

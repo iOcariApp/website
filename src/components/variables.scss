@@ -1,6 +1,6 @@
 $bg: #f1f4f5;
 $primary-color: #f50057;
-$secondary-color: #204A61;
+$secondary-color: #204a61;
 
 $sm-anchor: 360px;
 $md-anchor: 768px;
@@ -14,6 +14,6 @@ $overlay-z-index: 1;
 $navbar-z-index: 2;
 
 .maxWidthHeader {
-	max-width: $max-width-header;
-	margin: 0 auto;
+  max-width: $max-width-header;
+  margin: 0 auto;
 }

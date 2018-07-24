@@ -8,14 +8,14 @@ import DevCorner from "components/DevCorner";
 import MobilePreview from "components/MobilePreview";
 
 const Home = () => (
-	<div className={style.main}>
-		<WithOverlay>
-			<Header />
-		</WithOverlay>
-		<Features />
-		<DevCorner />
-		<MobilePreview />
-	</div>
+  <div className={style.main}>
+    <WithOverlay>
+      <Header />
+    </WithOverlay>
+    <Features />
+    <DevCorner />
+    <MobilePreview />
+  </div>
 );
 
 export default Home;

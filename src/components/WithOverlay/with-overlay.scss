@@ -1,84 +1,84 @@
 @import "../variables.scss";
 
 .main {
-	position: fixed;
-	top: 0%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-	background-color: white;
-	text-align: center;
-	width: 318px;
-	padding: 13px 16px;
-	border-radius: 11px;
-	color: #434343;
+  background-color: white;
+  text-align: center;
+  width: 318px;
+  padding: 13px 16px;
+  border-radius: 11px;
+  color: #434343;
 
-	z-index: $overlay-z-index;
+  z-index: $overlay-z-index;
 
-	animation-name: appear;
-	animation-duration: 0.3s;
-	animation-fill-mode: forwards;
+  animation-name: appear;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
 
-	box-shadow: 0 3px 6px rgba(black, 0.16);
+  box-shadow: 0 3px 6px rgba(black, 0.16);
 
-	span {
-		color: #19586c;
-		font-size: 18px;
-		font-weight: bold;
-	}
+  span {
+    color: #19586c;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-	p {
-		color: #434343;
-		font-size: 16px;
-		margin-top: 10px;
-	}
+  p {
+    color: #434343;
+    font-size: 16px;
+    margin-top: 10px;
+  }
 }
 
 @keyframes appear {
-	from {
-		top: 0%;
-	}
-	to {
-		top: 50%;
-	}
+  from {
+    top: 0%;
+  }
+  to {
+    top: 50%;
+  }
 }
 
 .icon {
-	display: block;
-	margin: 0 auto 10px;
-	width: 82px;
-	height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  width: 82px;
+  height: auto;
 }
 
 .button {
-	margin-top: 15px;
-	width: 140px;
-	height: 40px;
-	font-size: 18px;
+  margin-top: 15px;
+  width: 140px;
+  height: 40px;
+  font-size: 18px;
 }
 
 @media screen and (min-width: $lg-anchor) {
-	.main {
-		width: 545px;
-		font-size: 20px;
-		padding: 26px 32px;
+  .main {
+    width: 545px;
+    font-size: 20px;
+    padding: 26px 32px;
 
-		span {
-			font-size: 24px;
-		}
+    span {
+      font-size: 24px;
+    }
 
-		p {
-			font-size: 22px;
-		}
-	}
+    p {
+      font-size: 22px;
+    }
+  }
 
-	.icon {
-		width: 92px;
-	}
+  .icon {
+    width: 92px;
+  }
 
-	.button {
-		width: 164px;
-		height: 52px;
-		font-size: 20px;
-	}
+  .button {
+    width: 164px;
+    height: 52px;
+    font-size: 20px;
+  }
 }

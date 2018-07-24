@@ -3,100 +3,100 @@
 $menu-height: 100px;
 
 .fake {
-	width: 100%;
-	height: $menu-height;
+  width: 100%;
+  height: $menu-height;
 }
 
 .main {
-	width: 100%;
+  width: 100%;
 
-	height: $menu-height;
-	padding: 15px 25px;
+  height: $menu-height;
+  padding: 15px 25px;
 
-	z-index: $navbar-z-index;
+  z-index: $navbar-z-index;
 }
 
 .solid {
-	.menu {
-		a {
-			color: $secondary-color;
-		}
-	}
+  .menu {
+    a {
+      color: $secondary-color;
+    }
+  }
 }
 
 .sticky {
-	position: fixed;
-	top: 0;
+  position: fixed;
+  top: 0;
 
-	animation-name: fadeIn;
-	animation-duration: 0.5s;
-	animation-fill-mode: forwards;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .content {
-	@extend .maxWidthHeader;
+  @extend .maxWidthHeader;
 
-	transform: translateY(-50%);
-	position: relative;
-	top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .logo {
-	display: inline-block;
-	width: auto;
-	height: 45px;
+  display: inline-block;
+  width: auto;
+  height: 45px;
 }
 
 .menu {
-	a {
-		color: white;
-		font-size: 14px;
-		text-decoration: none;
+  a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
 
-		+ a {
-			margin-left: 20px;
-		}
-	}
+    + a {
+      margin-left: 20px;
+    }
+  }
 
-	.activeLink {
-		padding-bottom: 12px;
-		border-bottom: 6px solid #03a9f4;
-	}
+  .activeLink {
+    padding-bottom: 12px;
+    border-bottom: 6px solid #03a9f4;
+  }
 }
 
 .button {
-	margin-left: 27px;
+  margin-left: 27px;
 }
 
 @media screen and(min-width: $lg-anchor) {
-	.logo {
-		height: 55px;
-	}
+  .logo {
+    height: 55px;
+  }
 
-	.menu {
-		a {
-			font-size: 16px;
+  .menu {
+    a {
+      font-size: 16px;
 
-			+ a {
-				margin-left: 30px;
-			}
-		}
-	}
+      + a {
+        margin-left: 30px;
+      }
+    }
+  }
 
-	.button {
-		font-size: 16px;
-	}
+  .button {
+    font-size: 16px;
+  }
 }

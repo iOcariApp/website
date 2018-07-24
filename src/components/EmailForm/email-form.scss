@@ -11,56 +11,57 @@ $md-button-width: 140px;
 $lg-height: 50px;
 
 .input {
-	width: 100%;
-	height: $sm-height;
+  width: 100%;
+  height: $sm-height;
 
-	border: none;
-	border-radius: 7px;
+  border: none;
+  border-radius: 7px;
 
-	padding: 0 15px;
+  padding: 0 15px;
 
-	font-size: $sm-font-size;
+  font-size: $sm-font-size;
 }
 
 .button {
-	display: block;
-	padding: 0;
-	margin: 17px auto 0;
-	
-	width: $sm-button-width;
-	height: $sm-height;
+  display: block;
+  padding: 0;
+  margin: 17px auto 0;
 
-	font-weight: bold;
-	font-size: $sm-font-size;
+  width: $sm-button-width;
+  height: $sm-height;
+
+  font-weight: bold;
+  font-size: $sm-font-size;
 }
 
 @media screen and (min-width: $md-anchor) {
-	.main {
-		display: flex;
-	}
+  .main {
+    display: flex;
+  }
 
-	.input {
-		display: inline-block;
-		border-radius: 6px 0 0 6px;
-		flex: 1;
+  .input {
+    display: inline-block;
+    border-radius: 6px 0 0 6px;
+    flex: 1;
 
-		height: $md-height;
-		font-size: $md-font-size;
-	}
+    height: $md-height;
+    font-size: $md-font-size;
+  }
 
-	.button {
-		display: inline-block;
-		margin-top: 0;
-		border-radius: 0 6px 6px 0;
+  .button {
+    display: inline-block;
+    margin-top: 0;
+    border-radius: 0 6px 6px 0;
 
-		width: $md-button-width;
-		height: $md-height;
-		font-size: $md-font-size;
-	}
+    width: $md-button-width;
+    height: $md-height;
+    font-size: $md-font-size;
+  }
 }
 
 @media screen and(min-width: $lg-anchor) {
-	.input, .button {
-		height: $lg-height;
-	}
+  .input,
+  .button {
+    height: $lg-height;
+  }
 }

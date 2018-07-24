@@ -1,55 +1,54 @@
 @import "../variables.scss";
 
 .main {
-	width: 100%;
-	min-height: 154px;
-	padding: 16px;
-	border-radius: 7px;
-	border: 1px solid #eeeeee;
-	background-color: white;
-	box-shadow: 0 3px 6px rgba(#1d629d, 0.16);
+  width: 100%;
+  min-height: 154px;
+  padding: 16px;
+  border-radius: 7px;
+  border: 1px solid #eeeeee;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(#1d629d, 0.16);
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .description {
-	flex: 4;
+  flex: 4;
 
-	> * {
-		width: 100%;
-	}
+  > * {
+    width: 100%;
+  }
 }
 
 .title {
-	font-size: 18px;
-	color: #606060;
+  font-size: 18px;
+  color: #606060;
 }
 
 .text {
-	font-size: 16px;
-	color: #8d8d8d;
+  font-size: 16px;
+  color: #8d8d8d;
 }
 
 .img {
-	width: 91px;
-	margin-left: 10px;
+  width: 91px;
+  margin-left: 10px;
 }
 
 @media screen and (min-width: $xl-anchor) {
-	.title {
-		font-size: 22px;
-	}
+  .title {
+    font-size: 22px;
+  }
 }
 
-
 @media screen and (min-width: $xxl-anchor) {
-	.title {
-		font-size: 26px;
-	}
+  .title {
+    font-size: 26px;
+  }
 
-	.text {
-		font-size: 18px;
-	}
+  .text {
+    font-size: 18px;
+  }
 }
