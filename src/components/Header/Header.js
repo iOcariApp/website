@@ -7,8 +7,10 @@ import googlePlay from "./google-play.svg";
 import appStore from "./app-store.svg";
 import mobile from "./mobile.png";
 
+import OverlayContext from "contexts/OverlayContext";
+
 import NavBar from "components/NavBar";
-import EmailForm from "components/EmailForm";
+import InputWithButton from "components/InputWithButton";
 
 const DiagonalHeader = ({ className }) => (
   <svg
@@ -33,7 +35,17 @@ const Header = () => (
         </h4>
         <p>Apúntate a la Beta y conviértete en pionero ¡plazas límitadas!</p>
         <div className={style.emailForm}>
-          <EmailForm />
+          <OverlayContext.Consumer>
+            {({ showOverlay }) => (
+              <InputWithButton
+                breakResponsive={true}
+                type="email"
+                placeholder="Correo"
+                buttonText="¡A POR ELLO!"
+                onClick={showOverlay}
+              />
+            )}
+          </OverlayContext.Consumer>
         </div>
         <p className={style.soon}>Próximamente en</p>
         <div className={style.stores}>

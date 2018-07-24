@@ -10,7 +10,35 @@ $md-button-width: 140px;
 
 $lg-height: 50px;
 
+.main {
+  display: flex;
+}
+
 .input {
+  display: inline-block;
+  flex: 1;
+
+  width: 100%;
+  height: $md-height;
+  font-size: $md-font-size;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0 15px;
+}
+
+.button {
+  display: inline-block;
+  padding: 0;
+  border-radius: 0 6px 6px 0;
+
+  width: $md-button-width;
+  height: $md-height;
+
+  font-size: $md-font-size;
+  font-weight: bold;
+}
+
+.inputResponsive {
   width: 100%;
   height: $sm-height;
 
@@ -22,7 +50,7 @@ $lg-height: 50px;
   font-size: $sm-font-size;
 }
 
-.button {
+.buttonResponsive {
   display: block;
   padding: 0;
   margin: 17px auto 0;
@@ -35,11 +63,11 @@ $lg-height: 50px;
 }
 
 @media screen and (min-width: $md-anchor) {
-  .main {
+  .mainResponsive {
     display: flex;
   }
 
-  .input {
+  .inputResponsive {
     display: inline-block;
     border-radius: 6px 0 0 6px;
     flex: 1;
@@ -48,7 +76,7 @@ $lg-height: 50px;
     font-size: $md-font-size;
   }
 
-  .button {
+  .buttonResponsive {
     display: inline-block;
     margin-top: 0;
     border-radius: 0 6px 6px 0;
@@ -61,7 +89,9 @@ $lg-height: 50px;
 
 @media screen and(min-width: $lg-anchor) {
   .input,
-  .button {
+  .button,
+  .inputResponsive,
+  .buttonResponsive {
     height: $lg-height;
   }
 }
