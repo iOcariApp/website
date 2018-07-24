@@ -1,5 +1,8 @@
+@import "../variables.scss";
+
 .main {
   padding: 35px 24px 55px;
+  background-color: #f1f4f5;
 }
 
 .sectionTitle {
@@ -14,12 +17,12 @@
 }
 
 .inputWithButton {
-  margin: 30px 0 50px;
+  margin: 30px auto 50px;
 }
 
 .input {
   height: 50px;
-  border: 1px solid #bbe6eb;
+  border: 1px solid #949c9d;
   margin-right: -1px;
   font-size: 24px;
   color: #626262;
@@ -29,4 +32,38 @@
   width: 83px;
   height: 50px;
   font-size: 24px;
+}
+
+.countries {
+  display: grid;
+  grid-gap: 16px;
+}
+
+.showMore {
+  margin-top: 22px;
+}
+
+@media screen and (min-width: $md-anchor) {
+  .main {
+    max-width: initial;
+    padding: 40px 60px 60px;
+    text-align: center;
+  }
+
+  .maxWidth {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .inputWithButton {
+    max-width: 350px;
+  }
+
+  .countries {
+    grid-template-columns: repeat(auto-fill, calc(50% - 10px));
+  }
+
+  .showMore {
+    margin-top: 40px;
+  }
 }

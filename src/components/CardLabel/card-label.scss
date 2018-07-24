@@ -1,0 +1,38 @@
+@import "../variables.scss";
+
+.default {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #0277bd;
+  padding: 7px 16px;
+  text-transform: uppercase;
+}
+
+.exists {
+  @extend .default;
+
+  background-color: $primary-color;
+}
+
+.border {
+  @extend .default;
+
+  color: #75bfd5;
+  background-color: white;
+  border: 4px solid #75bfd5;
+}
+
+.left {
+}
+
+.right {
+}
+
+.cubeLogo {
+  width: 35px;
+}

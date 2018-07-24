@@ -8,7 +8,9 @@ class InputWithButton extends React.Component {
   state = { value: "" };
 
   onChange = e => {
-    this.setState({ value: e.target.value });
+    const newValue = e.target.value;
+    this.props.onChange(newValue);
+    this.setState({ value: newValue });
   };
 
   render = () => {
@@ -56,6 +58,7 @@ InputWithButton.propTypes = {
   buttonText: PropTypes.string,
   buttonClass: PropTypes.string,
   onClick: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 InputWithButton.defaultProps = {
@@ -66,6 +69,7 @@ InputWithButton.defaultProps = {
   buttonText: "",
   buttonClass: "",
   onClick: () => null,
+  onChange: () => null,
 };
 
 export default InputWithButton;
