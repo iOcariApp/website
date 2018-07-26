@@ -10,6 +10,7 @@ import VideoSection from "components/VideoSection";
 import Map from "components/Map";
 import Placeholder from "components/Placeholder";
 import CTABottom from "components/CTABottom";
+import Footer from "components/Footer";
 
 const Home = () => (
   <div className={style.main}>
@@ -25,6 +26,7 @@ const Home = () => (
     <WithOverlay>
       <CTABottom />
     </WithOverlay>
+    <Footer />
   </div>
 );
 

@@ -1,5 +1,7 @@
 @import "../variables.scss";
 
+$footer-color: #29375e;
+
 .container {
   height: 100%;
 
@@ -14,6 +16,12 @@
   &.secondary {
     .st1 {
       fill: $secondary-color;
+    }
+  }
+
+  &.footer {
+    .st1 {
+      fill: $footer-color;
     }
   }
 }
