@@ -147,6 +147,17 @@
   .logo {
     height: 90px;
   }
+
+  .legals {
+    position: absolute;
+    left: 35px;
+    top: 130px;
+    font-size: 20px;
+
+    > * + * {
+      margin-left: 30px;
+    }
+  }
 }
 
 @media screen and (min-width: $xxl-anchor) {
@@ -162,6 +173,7 @@
     position: absolute;
     left: 35px;
     top: 130px;
+    font-size: inherit;
 
     > * + * {
       margin-left: 50px;
