@@ -8,6 +8,8 @@ import DevCorner from "components/DevCorner";
 import MobilePreview from "components/MobilePreview";
 import VideoSection from "components/VideoSection";
 import Map from "components/Map";
+import Placeholder from "components/Placeholder";
+import CTABottom from "components/CTABottom";
 
 const Home = () => (
   <div className={style.main}>
@@ -19,6 +21,10 @@ const Home = () => (
     <MobilePreview />
     <VideoSection />
     <Map />
+    <Placeholder />
+    <WithOverlay>
+      <CTABottom />
+    </WithOverlay>
   </div>
 );
 

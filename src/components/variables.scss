@@ -13,6 +13,8 @@ $max-width-header: 1024px;
 $overlay-z-index: 1;
 $navbar-z-index: 2;
 
+$diagonal-angle: 10vw;
+
 .maxWidthHeader {
   max-width: $max-width-header;
   margin: 0 auto;

@@ -1,0 +1,75 @@
+@import "../variables.scss";
+
+$md-form-height: 66px;
+
+.main {
+  position: relative;
+  overflow: hidden;
+
+  background-image: linear-gradient(#0a7884, #2b3450);
+  clip-path: polygon(0 0, 100% $diagonal-angle, 100% 100%, 0 100%);
+  margin-top: -$diagonal-angle;
+}
+
+.content {
+  padding: calc(#{$diagonal-angle} + 35px) 18px 55px;
+  max-width: 630px;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+
+.sectionTitle {
+  margin-bottom: 30px;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.emailForm {
+  margin: 35px auto 17px;
+  max-width: 620px;
+}
+
+@media screen and (min-width: $md-anchor) {
+  .sectionTitle {
+    font-size: 44px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .emailForm {
+    margin-top: 55px;
+  }
+
+  .input {
+    font-size: 20px;
+    height: $md-form-height;
+  }
+
+  .inputButton {
+    height: $md-form-height;
+  }
+}
+
+@media screen and (min-width: $lg-anchor) {
+  .content {
+    max-width: 850px;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .content {
+    max-width: 1070px;
+  }
+
+  .sectionTitle {
+    font-size: 58px;
+    margin-bottom: 45px;
+  }
+}
