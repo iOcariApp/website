@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Home from "../pages/Home";
+import Home from "pages/Home";
+import AboutUs from "pages/AboutUs";
 
 export const routes = [
   {
@@ -18,7 +19,7 @@ export const routes = [
   },
   {
     label: "Quienes somos",
-    component: Home,
+    component: AboutUs,
     exact: false,
     path: "/quienes-somos",
   },

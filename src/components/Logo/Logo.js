@@ -84,7 +84,7 @@ const Logo = ({ color }) => (
 );
 
 Logo.propTypes = {
-  color: PropTypes.oneOf(["secondary", "white"]),
+  color: PropTypes.oneOf(["secondary", "white", "footer"]),
 };
 
 export default Logo;

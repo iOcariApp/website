@@ -1,0 +1,47 @@
+@import "components/variables.scss";
+
+.main {
+}
+
+.header {
+  width: 100%;
+  height: 408px;
+  position: relative;
+  background-color: #204a61;
+}
+
+.header {
+  &::before {
+    content: "";
+    background-image: url("./header-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .header {
+    height: 500px;
+
+    &::before {
+      background-position: left -32px;
+    }
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .header {
+    height: 600px;
+
+    &:before {
+      background-position: left -100px;
+    }
+  }
+}
