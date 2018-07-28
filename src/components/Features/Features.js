@@ -3,7 +3,7 @@ import style from "./features.scss";
 
 import glassGirl from "./glass-girl.png";
 
-import FeatureCard from "../FeatureCard";
+import FeatureCard from "components/FeatureCard";
 
 const features = [
   {

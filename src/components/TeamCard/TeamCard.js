@@ -4,8 +4,8 @@ import style from "./team-card.scss";
 
 import Card from "components/Card";
 
-import enzo from "../TheTeam/members/enzo.png";
-import react from "../TheTeam/skills/react.svg";
+import enzo from "components/TheTeam/members/enzo.png";
+import react from "components/TheTeam/skills/react.svg";
 
 const Mapple = ({ color }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.666 23.667">

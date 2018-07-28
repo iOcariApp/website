@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "pages/Home";
 import AboutUs from "pages/AboutUs";
+import Advices from "pages/Advices";
 
 export const routes = [
   {
@@ -25,7 +26,7 @@ export const routes = [
   },
   {
     label: "Consejos de uso",
-    component: Home,
+    component: Advices,
     exact: false,
     path: "/consejos-de-uso",
   },

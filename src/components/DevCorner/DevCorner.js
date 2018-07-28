@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./dev-corner.scss";
 
-import Button from "../Button";
+import Button from "components/Button";
 
 const DevCorner = () => (
   <div className={style.main}>

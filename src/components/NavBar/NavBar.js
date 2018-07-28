@@ -4,8 +4,8 @@ import style from "./nav-bar.cssmodule.scss";
 import { withRouter } from "react-router-dom";
 import { routes } from "routes";
 
-import SmallNavBar from "../SmallNavBar";
-import LargeNavBar from "../LargeNavBar";
+import SmallNavBar from "components/SmallNavBar";
+import LargeNavBar from "components/LargeNavBar";
 
 class NavBar extends React.PureComponent {
   state = { sticky: false };

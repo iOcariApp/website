@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./map.scss";
 
-import InputWithButton from "../InputWithButton";
-import CardLabel from "../CardLabel";
+import InputWithButton from "components/InputWithButton";
+import CardLabel from "components/CardLabel";
 
 class Map extends React.Component {
   state = { showing: 4, search: "" };
