@@ -1,0 +1,14 @@
+.main {
+  position: relative;
+  width: 100%;
+  min-height: 154px;
+  padding: 16px;
+  border-radius: 7px;
+  border: 1px solid #eeeeee;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(#1d629d, 0.16);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

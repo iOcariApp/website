@@ -1,0 +1,144 @@
+@import "../variables.scss";
+
+.avatar {
+  width: 85px;
+  margin-right: 13px;
+}
+
+.verticalContent {
+  text-align: left;
+  flex: 1;
+  padding: 12px 0;
+}
+
+.name {
+  font-size: 18px;
+  color: #606060;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 21px;
+  color: #8d8d8d;
+}
+
+.skills {
+  margin-top: 8px;
+}
+
+.skill {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(black, 0.16);
+
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  + .skill {
+    margin-left: 7px;
+  }
+}
+
+.skillPadding {
+  @extend .skill;
+
+  > img {
+    padding: 4px;
+  }
+}
+
+.mapple {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  width: 23px;
+  display: none;
+}
+
+@media screen and (min-width: $sm-anchor) {
+  .avatar {
+    width: 105px;
+  }
+
+  .verticalContent {
+    padding: initial;
+  }
+
+  .mapple {
+    display: block;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .main {
+    padding: 35px;
+  }
+
+  .avatar {
+    width: 165px;
+    margin-right: 34px;
+  }
+
+  .name {
+    font-size: 23px;
+    margin-bottom: 12px;
+  }
+
+  .description {
+    font-size: 21px;
+    line-height: 26px;
+  }
+
+  .skills {
+    margin-top: 12px;
+  }
+
+  .skill {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mapple {
+    width: 45px;
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .main {
+    padding: 45px;
+  }
+
+  .avatar {
+    width: 190px;
+    margin-right: 54px;
+  }
+
+  .name {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .skills {
+    margin-top: 18px;
+  }
+
+  .skill {
+    width: 50px;
+    height: 50px;
+  }
+
+  .mapple {
+    width: 55px;
+  }
+}

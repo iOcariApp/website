@@ -1,3 +1,95 @@
+@import "../variables.scss";
+
+$md-max-width-card: 359px;
+$xl-max-width-card: 554px;
+$xxl-max-width-card: 740px;
+
 .main {
-	color: green;
+  background-color: #f1f4f5;
+  padding: 20px 15px 55px;
+  text-align: center;
+}
+
+.sectionTitle {
+  color: #606060;
+  margin-bottom: 22px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 21px;
+  color: #8d8d8d;
+  max-width: 647px;
+  margin: 0 auto 24px;
+}
+
+.cards {
+  display: grid;
+  grid-gap: 19px;
+  justify-content: center;
+
+  > div {
+    max-width: $md-max-width-card;
+  }
+}
+
+@media screen and (min-width: $md-anchor) {
+  .main {
+    padding-top: 35px;
+  }
+
+  .sectionTitle {
+    font-size: 44px;
+  }
+
+  .text {
+    max-width: 647px;
+    font-size: 18px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fill, $md-max-width-card);
+
+    > div {
+      max-width: $xl-max-width-card;
+    }
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .sectionTitle {
+    font-size: 54px;
+    margin-bottom: 40px;
+  }
+
+  .text {
+    max-width: 850px;
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 34px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fill, $xl-max-width-card);
+
+    > div {
+      max-width: initial;
+    }
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .sectionTitle {
+    font-size: 64px;
+  }
+
+  .text {
+    max-width: 1050px;
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fill, $xxl-max-width-card);
+  }
 }
