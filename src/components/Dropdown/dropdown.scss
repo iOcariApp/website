@@ -1,0 +1,53 @@
+@import "~components/Input/input.scss";
+
+.root {
+  position: relative;
+}
+
+.input {
+  @extend .main;
+
+  position: relative;
+  text-align: left;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.labelSelected {
+  margin: 0;
+  flex: 1;
+}
+
+.arrow {
+  width: 15px;
+}
+
+.arrowTop {
+  @extend .arrow;
+
+  transform: translateY(calc(-50% + 6px)) rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 3px));
+  background: white;
+  z-index: 1;
+  width: 90%;
+  left: 5%;
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 3px 6px rgba(black, 0.12);
+  padding: 0 10px;
+}
+
+.option {
+  color: #333333;
+  padding: 15px 0;
+
+  + .option {
+    border-top: 1px solid #949c9d;
+  }
+}

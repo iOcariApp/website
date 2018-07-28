@@ -1,12 +1,12 @@
 @import "../variables.scss";
 
-$md-max-width-card: 359px;
+$md-max-width-card: 356px;
 $xl-max-width-card: 554px;
 $xxl-max-width-card: 740px;
 
 .main {
   background-color: #f1f4f5;
-  padding: 20px 15px 55px;
+  padding: 35px 18px 55px;
   text-align: center;
 }
 
@@ -34,10 +34,6 @@ $xxl-max-width-card: 740px;
 }
 
 @media screen and (min-width: $md-anchor) {
-  .main {
-    padding-top: 35px;
-  }
-
   .sectionTitle {
     font-size: 44px;
   }

@@ -51,7 +51,7 @@ TeamCard.propTypes = {
   avatar: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
-  skills: PropTypes.arrayOf(PropTypes.node),
+  skills: PropTypes.arrayOf(PropTypes.object),
   mapple: PropTypes.string,
 };
 

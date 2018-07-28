@@ -1,3 +1,31 @@
 .main {
-	color: green;
+  color: white;
+  background-color: #0277bd;
+  padding: 35px 34px 55px;
+}
+
+.sectionTitle {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 20px;
+}
+
+.form {
+  text-align: center;
+}
+
+.textarea {
+  height: 252px;
+}
+
+.button {
+  width: 260px;
+  height: 64px;
+  font-size: 20px;
+  margin-top: 48px;
 }
