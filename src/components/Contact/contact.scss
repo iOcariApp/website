@@ -1,7 +1,14 @@
+@import "../variables.scss";
+
 .main {
   color: white;
   background-color: #0277bd;
   padding: 35px 34px 55px;
+}
+
+.maxWidth {
+  margin: 0 auto;
+  max-width: 450px;
 }
 
 .sectionTitle {
@@ -28,4 +35,94 @@
   height: 64px;
   font-size: 20px;
   margin-top: 48px;
+}
+
+@media screen and (min-width: $md-anchor) {
+  .maxWidth {
+    display: flex;
+    max-width: 1200px;
+  }
+
+  .left {
+    width: 220px;
+    text-align: left;
+    margin-right: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 44px;
+    text-align: left;
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .form {
+    text-align: left;
+    flex: 1;
+  }
+
+  .reason {
+    width: 80% !important;
+  }
+
+  .name {
+    width: 80% !important;
+  }
+
+  .email {
+    width: 90% !important;
+  }
+
+  .button {
+    width: 158px;
+    height: 54px;
+  }
+}
+
+@media screen and (min-width: $md-anchor) {
+  .main {
+    background-image: url("./bg-xxl.png");
+    background-position: 0 -120px;
+  }
+
+  .left {
+    width: 250px;
+    padding-top: 18px;
+  }
+
+  .shieldXXL {
+    width: 150px;
+  }
+
+  .sectionTitle {
+    font-size: 44px;
+  }
+
+  .text {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .left {
+    width: 400px;
+    margin-right: 52px;
+  }
+
+  .shieldXXL {
+    width: 200px;
+  }
+
+  .sectionTitle {
+    font-size: 64px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
