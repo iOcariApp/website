@@ -1,3 +1,4 @@
+@import "../variables.scss";
 @import "~components/Input/input.scss";
 
 .root {
@@ -35,7 +36,7 @@
   bottom: 0;
   transform: translateY(calc(100% + 3px));
   background: white;
-  z-index: $missc-z-index;
+  z-index: $misscelaneous-z-index;
   width: 90%;
   left: 5%;
   border-radius: 0 0 7px 7px;
