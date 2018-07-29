@@ -55,6 +55,7 @@ class MobilePreview extends React.Component {
                 style={{ left: 10 + (index - screenIndex) * 240 }}
                 src={screen}
                 onClick={() => this.goToScreen(index)}
+                alt="App screenshot"
               />
             ))}
           </div>

@@ -4,9 +4,6 @@ import style from "./team-card.scss";
 
 import Card from "components/Card";
 
-import enzo from "components/TheTeam/members/enzo.png";
-import react from "components/TheTeam/skills/react.svg";
-
 const Mapple = ({ color }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.666 23.667">
     <path
@@ -19,7 +16,7 @@ const Mapple = ({ color }) => (
 
 const TeamCard = ({ index, avatar, name, description, skills, mapple }) => (
   <Card className={style.main}>
-    <img src={avatar} className={style.avatar} />
+    <img src={avatar} className={style.avatar} alt={`${name}'s avatar`} />
     <div className={style.mapple}>
       <Mapple color={mapple} />
     </div>

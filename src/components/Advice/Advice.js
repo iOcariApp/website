@@ -5,7 +5,7 @@ import style from "./advice.scss";
 const Advice = ({ icon, title, content }) => (
   <div className={style.main}>
     <h1 className={style.title}>
-      <img className={`lg ${style.icon}`} src={icon} />
+      <img className={`lg ${style.icon}`} src={icon} alt="" />
       {title}
     </h1>
     <div className={style.content}>{content}</div>

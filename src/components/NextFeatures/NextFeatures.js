@@ -36,6 +36,7 @@ const Feature = ({ icon, label, smallVisible }) => (
     <img
       className={`${smallVisible ? style.icon : style.iconMedium}`}
       src={icon}
+      alt=""
     />
     <p className={style.label}>{label}</p>
   </div>

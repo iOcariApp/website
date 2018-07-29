@@ -1,8 +1,6 @@
 import React from "react";
 import style from "./header.scss";
 
-import { Link } from "react-router-dom";
-
 import googlePlay from "./google-play.svg";
 import appStore from "./app-store.svg";
 import mobile from "./mobile.png";

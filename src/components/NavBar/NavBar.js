@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import style from "./nav-bar.cssmodule.scss";
 
 import { withRouter } from "react-router-dom";
 import { routes } from "routes";

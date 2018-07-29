@@ -17,6 +17,7 @@ const Footer = () => (
           className={style.socialItem}
           href="https://www.facebook.com/iOcariApp/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img src={facebook} alt="Facebook logo" />
         </a>
@@ -24,6 +25,7 @@ const Footer = () => (
           className={style.socialItem}
           href="https://twitter.com/iOcariApp?lang=es"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img src={twitter} alt="Twitter logo" />
         </a>
@@ -31,6 +33,7 @@ const Footer = () => (
           className={style.socialItem}
           href="https://www.instagram.com/iocari/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img src={instagram} alt="Instagram logo" />
         </a>
@@ -46,6 +49,7 @@ const Footer = () => (
         className={style.blueCorp}
         href="http://www.thebluecorp.com/"
         target="_blank"
+        rel="noopener noreferrer"
       >
         Powered by: The Blue Corp
       </a>

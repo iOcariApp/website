@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import style from "./small-nav-bar.scss";
 
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import { routes } from "routes";
 import getFullClass from "utils/getFullClass";
 
 import Logo from "components/Logo";
-import Button from "components/Button";
 
 class SmallNavBar extends React.Component {
   state = { open: false };

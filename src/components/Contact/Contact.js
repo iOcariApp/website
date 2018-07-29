@@ -40,7 +40,7 @@ class Contact extends React.Component {
       <div className={style.main}>
         <div className={style.maxWidth}>
           <div className={style.left}>
-            <img className={`md ${style.shieldXXL}`} src={iconXXL} />
+            <img className={`md ${style.shieldXXL}`} src={iconXXL} alt="" />
             <h1 className={style.sectionTitle}>Contacto</h1>
             <p className={style.text}>
               ¿Dudas? ¿Quejas, felicitaciones o comentarios? No dudéis en
@@ -53,6 +53,7 @@ class Contact extends React.Component {
               label="Contacto por"
               className={style.reason}
               options={options}
+              value={reason}
               onChange={label => {
                 this.onChange({ target: { name: "reason", value: label } });
               }}
