@@ -1,14 +1,22 @@
 import React from "react";
 import style from "./mobile-preview.scss";
 
+import { isMobile } from "react-device-detect";
+import Swipeable from "react-swipeable";
+
 import arrowRight from "./arrow-right.svg";
 
 const screens = Array(5)
   .fill()
   .map((whatever, index) => require(`./screen-${index}.png`));
 
+// Home screen first
+if (isMobile) {
+  screens.sort((a, b) => (a.includes("screen-2") ? -1 : 1));
+}
+
 class MobilePreview extends React.Component {
-  state = { screenIndex: 0 };
+  state = { screenIndex: isMobile ? 0 : 2 };
 
   prevScreen = () => {
     this.setState(state => ({
@@ -26,6 +34,14 @@ class MobilePreview extends React.Component {
     this.setState({ screenIndex });
   };
 
+  swipedLeft = () => {
+    this.nextScreen();
+  };
+
+  swipedRight = () => {
+    this.prevScreen();
+  };
+
   getSizeClass = index => {
     const { screenIndex } = this.state;
     const dif = Math.abs(screenIndex - index);
@@ -40,32 +56,37 @@ class MobilePreview extends React.Component {
     return (
       <div className={style.main}>
         <h1 className={style.sectionTitle}>Tu nuevo mundo</h1>
-        <div className={style.mobileZone}>
-          <img
-            className={style.arrowLeft}
-            src={arrowRight}
-            alt="Arrow pointing to the left"
-            onClick={this.prevScreen}
-          />
-          <div className={style.mobile}>
-            {screens.map((screen, index) => (
-              <img
-                key={`mobile-screen-${index}`}
-                className={`${style.screen} ${this.getSizeClass(index)}`}
-                style={{ left: 10 + (index - screenIndex) * 240 }}
-                src={screen}
-                onClick={() => this.goToScreen(index)}
-                alt="App screenshot"
-              />
-            ))}
+        <Swipeable
+          onSwipedLeft={this.swipedLeft}
+          onSwipedRight={this.swipedRight}
+        >
+          <div className={style.mobileZone}>
+            <img
+              className={style.arrowLeft}
+              src={arrowRight}
+              alt="Arrow pointing to the left"
+              onClick={this.prevScreen}
+            />
+            <div className={style.mobile}>
+              {screens.map((screen, index) => (
+                <img
+                  key={`mobile-screen-${index}`}
+                  className={`${style.screen} ${this.getSizeClass(index)}`}
+                  style={{ left: 10 + (index - screenIndex) * 240 }}
+                  src={screen}
+                  onClick={() => this.goToScreen(index)}
+                  alt="App screenshot"
+                />
+              ))}
+            </div>
+            <img
+              className={style.arrowRight}
+              src={arrowRight}
+              alt="Arrow pointing to the right"
+              onClick={this.nextScreen}
+            />
           </div>
-          <img
-            className={style.arrowRight}
-            src={arrowRight}
-            alt="Arrow pointing to the right"
-            onClick={this.nextScreen}
-          />
-        </div>
+        </Swipeable>
       </div>
     );
   };
