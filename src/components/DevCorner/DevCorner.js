@@ -10,7 +10,13 @@ const DevCorner = () => (
       iOcari está en crecimiento y estamos desarrollando el resto de esta
       historia. Entérate de todo lo que viene en el rincón del desarrollador
     </p>
-    <Button className={style.button}>IR AL RINCÓN</Button>
+    <a
+      href="https://medium.com/@enzoferey"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Button className={style.button}>IR AL RINCÓN</Button>
+    </a>
   </div>
 );
 

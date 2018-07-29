@@ -51,7 +51,7 @@ class Contact extends React.Component {
           <form className={style.form} onSubmit={this.onSubmit}>
             <Dropdown
               label="Contacto por"
-              className={style.reason}
+              classNameRoot={style.reason}
               options={options}
               value={reason}
               onChange={label => {
@@ -59,6 +59,7 @@ class Contact extends React.Component {
               }}
             />
             <Input
+              type="text"
               label="Mi nombre es"
               className={style.name}
               name="name"
@@ -66,6 +67,7 @@ class Contact extends React.Component {
               onChange={this.onChange}
             />
             <Input
+              type="email"
               label="Mi correo es"
               className={style.email}
               name="email"

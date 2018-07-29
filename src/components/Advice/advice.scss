@@ -38,14 +38,16 @@
   }
 }
 
-@media screen and (min-width: $lg-anchor) {
+@media screen and (min-width: $md-anchor) {
   .icon {
     display: inline-block;
     width: 47px;
     margin-right: 20px;
     vertical-align: middle;
   }
+}
 
+@media screen and (min-width: $lg-anchor) {
   .title {
     font-size: 44px;
   }

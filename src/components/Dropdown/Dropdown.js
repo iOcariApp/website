@@ -21,13 +21,18 @@ class Dropdown extends React.Component {
 
   render = () => {
     const { label, showOptions } = this.state;
-    const { label: inputLabel, options, className } = this.props;
+    const {
+      label: inputLabel,
+      options,
+      classNameRoot,
+      classNameInput,
+    } = this.props;
 
     return (
-      <div className={style.root}>
+      <div className={`${classNameRoot} ${style.root}`}>
         {inputLabel && <label className={style.label}>{inputLabel}</label>}
         <div
-          className={`${className} ${style.input}`}
+          className={`${classNameInput} ${style.input}`}
           onClick={this.toggleOptions}
         >
           <p className={style.labelSelected}>{label}</p>
@@ -58,12 +63,14 @@ class Dropdown extends React.Component {
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func,
-  className: PropTypes.string,
+  classNameRoot: PropTypes.string,
+  classNameInput: PropTypes.string,
 };
 Dropdown.defaultProps = {
   options: [],
   onChange: () => null,
-  className: "",
+  classNameRoot: "",
+  classNameInput: "",
 };
 
 export default Dropdown;

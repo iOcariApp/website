@@ -46,9 +46,13 @@
 
 .option {
   color: #333333;
-  padding: 15px 0;
+  padding: 15px 10px;
 
   + .option {
     border-top: 1px solid #949c9d;
+  }
+
+  &:hover {
+    background-color: #f1f4f5;
   }
 }
