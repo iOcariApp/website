@@ -6,7 +6,12 @@ import InputWithButton from "components/InputWithButton";
 import CardLabel from "components/CardLabel";
 
 class Map extends React.Component {
-  state = { showing: 4, search: "" };
+  state = {
+    voted: false,
+    countries: this.props.countries,
+    showing: 4,
+    search: "",
+  };
 
   showMore = () => {
     this.setState(state => ({ showing: state.showing + 4 }));
@@ -16,14 +21,37 @@ class Map extends React.Component {
     this.setState({ search });
   };
 
-  render = () => {
-    const { showing, search } = this.state;
-    const { countries } = this.props;
+  onVote = votedCountry => {
+    const { voted, countries } = this.state;
 
-    const slicedCountries = countries.slice(0, showing);
+    if (votedCountry === "") return;
+
+    const copy = countries;
+    const countryIndex = copy.findIndex(
+      country => country.name.toLowerCase() === votedCountry.toLowerCase()
+    );
+
+    if (countryIndex >= 0) {
+      const toAdd = voted ? -1 : 1;
+      copy[countryIndex].votes = copy[countryIndex].votes + toAdd;
+
+      this.setState(state => ({ voted: !state.voted, countries: copy }));
+    }
+  };
+
+  render = () => {
+    const { voted, countries, showing, search } = this.state;
+
+    const moreVotesFirst = countries.sort((a, b) => {
+      if (a.exists) return -1;
+      return a.votes > b.votes ? -1 : 1;
+    });
+    const slicedCountries = moreVotesFirst.slice(0, showing);
     const filteredCountries = slicedCountries.filter(country =>
       country.name.toLowerCase().includes(search.toLowerCase())
     );
+
+    console.log("rerender");
 
     return (
       <div className={style.main}>
@@ -37,9 +65,9 @@ class Map extends React.Component {
             <InputWithButton
               placeholder="País"
               inputClass={style.input}
-              buttonText="+ 1"
+              buttonText={voted ? "- 1" : "+ 1"}
               buttonClass={style.inputButton}
-              onClick={value => console.log("+1 on country", value)}
+              onClick={this.onVote}
               onChange={this.onChange}
             />
           </div>
@@ -50,6 +78,9 @@ class Map extends React.Component {
                 type={country.exists ? "exists" : "default"}
                 left={country.name}
                 right={`+${country.votes}`}
+                onClick={() => {
+                  if (!country.exists) this.onVote(country.name);
+                }}
               />
             ))}
           </div>
