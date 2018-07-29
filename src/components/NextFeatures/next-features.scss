@@ -1,0 +1,158 @@
+@import "../variables.scss";
+
+.main {
+  background: linear-gradient(rgba(black, 0.77), rgba(black, 0.77)),
+    url("./bg.png");
+  background-position: center top;
+  color: white;
+  padding: 35px 18px 80px;
+  text-align: center;
+}
+
+.sectionTitle {
+  margin-bottom: 30px;
+}
+
+.separator {
+  width: 50%;
+  max-width: 300px;
+  height: 6px;
+  background-color: #0dbed1;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.features {
+  display: grid;
+  grid-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 30px auto 60px;
+  padding: 0 15px;
+  max-width: 784px;
+}
+
+.feature {
+  .icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+    vertical-align: bottom;
+  }
+
+  .iconMedium {
+    @extend .icon;
+
+    display: none;
+  }
+
+  .label {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (min-width: $sm-anchor) {
+  .main {
+    padding-bottom: 100px;
+  }
+
+  .feature {
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    .label {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+}
+
+@media screen and (min-width: $md-anchor) {
+  .main {
+    padding-bottom: 120px;
+  }
+
+  .features {
+    grid-template-columns: repeat(auto-fill, 47%);
+    padding-left: 12%;
+    margin-top: 60px;
+  }
+
+  .feature {
+    .iconMedium {
+      display: initial;
+    }
+  }
+}
+
+@media screen and (min-width: $lg-anchor) {
+  .main {
+    padding-bottom: 140px;
+  }
+
+  .features {
+    padding-left: 12%;
+    max-width: 988px;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .main {
+    padding-top: 50px;
+    padding-bottom: 160px;
+  }
+
+  .sectionTitle {
+    margin-bottom: 48px;
+  }
+
+  .feature {
+    .icon {
+      width: 46px;
+      height: 46px;
+      margin-right: 22px;
+    }
+
+    .label {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .main {
+    padding-top: 65px;
+    padding-bottom: 190px;
+  }
+
+  .sectionTitle {
+    font-size: 58px;
+    line-height: 78px;
+    margin-bottom: 64px;
+  }
+
+  .features {
+    max-width: 1500px;
+  }
+
+  .feature {
+    .icon {
+      width: 53px;
+      height: 53px;
+      margin-right: 27px;
+    }
+
+    .label {
+      font-size: 48px;
+      line-height: 64px;
+    }
+  }
+}

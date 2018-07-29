@@ -8,7 +8,7 @@ import DevCorner from "components/DevCorner";
 import MobilePreview from "components/MobilePreview";
 import VideoSection from "components/VideoSection";
 import Map from "components/Map";
-import Placeholder from "components/Placeholder";
+import NextFeatures from "components/NextFeatures";
 import CTABottom from "components/CTABottom";
 import Footer from "components/Footer";
 
@@ -22,7 +22,7 @@ const Home = () => (
     <MobilePreview />
     <VideoSection />
     <Map />
-    <Placeholder />
+    <NextFeatures />
     <WithOverlay>
       <CTABottom />
     </WithOverlay>
