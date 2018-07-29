@@ -5,28 +5,40 @@ import Home from "pages/Home";
 import AboutUs from "pages/AboutUs";
 import Advices from "pages/Advices";
 
+class WithResetScroll extends React.PureComponent {
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  };
+
+  render = () => {
+    const { render } = this.props;
+
+    return render();
+  };
+}
+
 export const routes = [
   {
     label: "Home",
-    component: Home,
+    render: () => <WithResetScroll render={Home} />,
     exact: true,
     path: "/",
   },
   {
     label: "Qué puedes hacer",
-    component: Home,
+    render: () => <WithResetScroll render={Home} />,
     exact: false,
-    path: "/que-puedes-hacer",
+    path: "#que-puedes-hacer",
   },
   {
     label: "Quienes somos",
-    component: AboutUs,
+    render: () => <WithResetScroll render={AboutUs} />,
     exact: false,
     path: "/quienes-somos",
   },
   {
     label: "Consejos de uso",
-    component: Advices,
+    render: () => <WithResetScroll render={Advices} />,
     exact: false,
     path: "/consejos-de-uso",
   },

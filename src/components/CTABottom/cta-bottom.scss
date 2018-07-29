@@ -11,6 +11,12 @@ $md-form-height: 66px;
   margin-top: -$diagonal-angle;
 }
 
+.anchor {
+  position: absolute;
+  top: 200px;
+  left: 0;
+}
+
 .content {
   padding: calc(#{$diagonal-angle} + 35px) 18px 55px;
   max-width: 630px;

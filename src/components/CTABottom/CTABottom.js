@@ -7,9 +7,10 @@ import InputWithButton from "components/InputWithButton";
 
 const CTABottom = () => (
   <div className={style.main}>
+    <div id="cta-bottom" className={style.anchor} />
     <div className={style.content}>
       <h1 className={style.sectionTitle}>
-        ¿Estás listo? únete a la Beta ahora
+        ¿Estás listo? Únete a la Beta ahora
       </h1>
       <p className={style.text}>
         Al subscribirte te unirás a la lista de espera para unirte al Beta de

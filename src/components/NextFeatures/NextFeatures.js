@@ -60,7 +60,9 @@ const NextFeatures = () => (
     <div className={style.separator} />
     <h2>Próximamente en iOcari...</h2>
     <div className={style.features}>
-      {features.map(feature => <Feature {...feature} />)}
+      {features.map((feature, index) => (
+        <Feature key={`next-feature-${index}`} {...feature} />
+      ))}
     </div>
     <Feature icon={dices} label="¡Y mucho más!" smallVisible={false} />
   </div>

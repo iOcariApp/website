@@ -2,6 +2,7 @@ import React from "react";
 import style from "./small-nav-bar.scss";
 
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import { routes } from "routes";
 
@@ -40,9 +41,9 @@ class SmallNavBar extends React.Component {
         {open && (
           <div className={style.collapsableMenu}>
             {routes.slice(1).map(route => (
-              <Link key={`navbar-${route.label}`} to={route.path}>
+              <HashLink smooth key={`navbar-${route.label}`} to={route.path}>
                 {route.label}
-              </Link>
+              </HashLink>
             ))}
           </div>
         )}
