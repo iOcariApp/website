@@ -15,7 +15,7 @@ const Footer = () => (
       <div className={style.social}>
         <a
           className={style.socialItem}
-          href="https://bit.ly/2AkrDiJ"
+          href="https://www.facebook.com/iOcariApp/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -23,7 +23,7 @@ const Footer = () => (
         </a>
         <a
           className={style.socialItem}
-          href="https://bit.ly/2NUOfs2"
+          href="https://twitter.com/iOcariApp?lang=es"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -31,7 +31,7 @@ const Footer = () => (
         </a>
         <a
           className={style.socialItem}
-          href="https://bit.ly/2LL2mm9"
+          href="https://www.instagram.com/iocari/"
           target="_blank"
           rel="noopener noreferrer"
         >
