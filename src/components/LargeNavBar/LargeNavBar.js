@@ -6,6 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import { routes } from "routes";
+import scrollToHash from "utils/scrollToHash";
 
 import Logo from "components/Logo";
 import Button from "components/Button";
@@ -28,10 +29,15 @@ const LargeNavBar = ({ background, solid, sticky, match, location }) => {
           </div>
           <div className={style.menu}>
             {routes.slice(1).map(route => (
-              <HashLink smooth key={`navbar-${route.label}`} to={route.path}>
+              <HashLink
+                scroll={scrollToHash}
+                key={`navbar-${route.label}`}
+                to={route.path}
+              >
                 <span
                   className={
-                    match.path === route.path || location.hash === route.path
+                    match.path === route.path ||
+                    `/${location.hash}` === route.path
                       ? style.activeLink
                       : ""
                   }
@@ -40,7 +46,7 @@ const LargeNavBar = ({ background, solid, sticky, match, location }) => {
                 </span>
               </HashLink>
             ))}
-            <HashLink smooth to={"/#cta-bottom"}>
+            <HashLink scroll={scrollToHash} to={"/#cta-bottom"}>
               <Button className={style.button}>ÚNETE</Button>
             </HashLink>
           </div>

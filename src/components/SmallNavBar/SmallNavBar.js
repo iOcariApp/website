@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import { routes } from "routes";
+import scrollToHash from "utils/scrollToHash";
 
 import getFullClass from "utils/getFullClass";
 
@@ -41,7 +42,12 @@ class SmallNavBar extends React.Component {
         {open && (
           <div className={style.collapsableMenu}>
             {routes.slice(1).map(route => (
-              <HashLink smooth key={`navbar-${route.label}`} to={route.path}>
+              <HashLink
+                scroll={scrollToHash}
+                key={`navbar-${route.label}`}
+                to={route.path}
+                onClick={this.toggle}
+              >
                 {route.label}
               </HashLink>
             ))}

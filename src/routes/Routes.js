@@ -28,7 +28,7 @@ export const routes = [
     label: "Qué puedes hacer",
     render: () => <WithResetScroll render={Home} />,
     exact: false,
-    path: "#que-puedes-hacer",
+    path: "/#que-puedes-hacer",
   },
   {
     label: "Quienes somos",
