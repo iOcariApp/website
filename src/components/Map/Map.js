@@ -51,8 +51,6 @@ class Map extends React.Component {
       country.name.toLowerCase().includes(search.toLowerCase())
     );
 
-    console.log("rerender");
-
     return (
       <div className={style.main}>
         <div className={style.maxWidth}>
