@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./input-with-button.scss";
 
+import axios from "axios";
+
 import Button from "components/Button";
 
 class InputWithButton extends React.Component {
-  state = { value: "" };
+  state = { value: "", error: false };
 
   onChange = e => {
     const newValue = e.target.value;
@@ -13,8 +15,31 @@ class InputWithButton extends React.Component {
     this.setState({ value: newValue });
   };
 
-  render = () => {
+  onClick = e => {
     const { value } = this.state;
+    const { onClick } = this.props;
+
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (emailRegex.test(value)) {
+      this.setState({ error: false });
+      axios
+        .post("http://www.paddla.es/patricia/addMail.php", {
+          email: value,
+        })
+        .then(response => {
+          onClick();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      this.setState({ error: true });
+    }
+  };
+
+  render = () => {
+    const { value, error } = this.state;
     const {
       breakResponsive,
       type,
@@ -28,7 +53,7 @@ class InputWithButton extends React.Component {
     const mainClass = breakResponsive ? style.mainResponsive : style.main;
     const inputClass = `${
       breakResponsive ? style.inputResponsive : style.input
-    } ${customInputClass}`;
+    } ${customInputClass} ${error ? style.inputError : ""}`;
     const buttonClass = `${
       breakResponsive ? style.buttonResponsive : style.button
     } ${customButtonClass}`;
@@ -42,7 +67,7 @@ class InputWithButton extends React.Component {
           value={value}
           onChange={this.onChange}
         />
-        <Button className={buttonClass} onClick={() => onClick(value)}>
+        <Button className={buttonClass} onClick={this.onClick}>
           {buttonText}
         </Button>
       </div>

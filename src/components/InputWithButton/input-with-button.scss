@@ -50,6 +50,10 @@ $lg-height: 50px;
   font-size: $sm-font-size;
 }
 
+.inputError {
+  border: 1px solid red;
+}
+
 .buttonResponsive {
   display: block;
   padding: 0;
