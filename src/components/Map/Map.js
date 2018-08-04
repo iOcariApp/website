@@ -5,6 +5,17 @@ import style from "./map.scss";
 import InputWithButton from "components/InputWithButton";
 import CardLabel from "components/CardLabel";
 
+const options = [
+  { value: "España", label: "España" },
+  { value: "Chile", label: "Chile" },
+  { value: "Cuba", label: "Cuba" },
+  {
+    value: "Argentina",
+    label: "Argentina",
+  },
+  { value: "México", label: "México" },
+];
+
 class Map extends React.Component {
   state = {
     voted: false,
@@ -67,6 +78,7 @@ class Map extends React.Component {
               buttonClass={style.inputButton}
               onClick={this.onVote}
               onChange={this.onChange}
+              options={options}
             />
           </div>
           <div className={style.countries}>

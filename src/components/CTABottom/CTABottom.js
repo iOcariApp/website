@@ -3,6 +3,8 @@ import style from "./cta-bottom.scss";
 
 import OverlayContext from "contexts/OverlayContext";
 
+import { subscribeEmail } from "db";
+
 import InputWithButton from "components/InputWithButton";
 
 const CTABottom = () => (
@@ -29,7 +31,8 @@ const CTABottom = () => (
               inputClass={style.input}
               buttonText="¡A POR ELLO!"
               buttonClass={style.inputButton}
-              onClick={showOverlay}
+              onClick={subscribeEmail}
+              onResponse={showOverlay}
             />
           )}
         </OverlayContext.Consumer>

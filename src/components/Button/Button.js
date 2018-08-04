@@ -10,7 +10,7 @@ const Button = ({ children, className, ...rest }) => (
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default Button;

@@ -7,6 +7,8 @@ import mobile from "./mobile.png";
 
 import OverlayContext from "contexts/OverlayContext";
 
+import { subscribeEmail } from "db";
+
 import NavBar from "components/NavBar";
 import InputWithButton from "components/InputWithButton";
 
@@ -40,7 +42,8 @@ const Header = () => (
                 type="email"
                 placeholder="Correo"
                 buttonText="¡A POR ELLO!"
-                onClick={showOverlay}
+                onClick={subscribeEmail}
+                onResponse={showOverlay}
               />
             )}
           </OverlayContext.Consumer>

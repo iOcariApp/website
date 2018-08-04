@@ -2,44 +2,93 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./input-with-button.scss";
 
-import axios from "axios";
+import Select from "react-select";
 
 import Button from "components/Button";
+import Spinner from "components/Spinner";
+
+const selectStyles = {
+  valueContainer: base => ({
+    ...base,
+  }),
+  container: base => ({
+    ...base,
+    margin: "auto -15px",
+    height: "100%",
+  }),
+  control: base => ({
+    ...base,
+    backgroundColor: "none",
+    border: "none",
+    height: "100%",
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  }),
+  option: base => ({
+    ...base,
+    color: "#333333",
+  }),
+  dropdownIndicator: () => ({
+    display: "none",
+  }),
+  indicatorSeparator: () => ({
+    display: "none",
+  }),
+};
 
 class InputWithButton extends React.Component {
   state = { value: "", error: false };
 
-  onChange = e => {
-    const newValue = e.target.value;
-    this.props.onChange(newValue);
-    this.setState({ value: newValue });
+  onChange = value => {
+    this.props.onChange(value);
+    this.setState({ value });
   };
 
-  onClick = e => {
+  onChangeOption = value => {
+    const { onChange } = this.props;
+    if (value === null) onChange("");
+    else onChange(value.label);
+    this.setState({ value });
+  };
+
+  onClick = () => {
     const { value } = this.state;
-    const { onClick } = this.props;
+    const { onClick, onResponse, onError, options } = this.props;
 
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // Reset error state
+    this.setState({ error: false });
 
-    if (emailRegex.test(value)) {
-      this.setState({ error: false });
-      axios
-        .post("http://www.paddla.es/patricia/addMail.php", {
-          email: value,
-        })
-        .then(response => {
-          onClick();
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
+    const onWrongFormat = () => {
       this.setState({ error: true });
-    }
+    };
+
+    const onSend = () => {
+      this.setState({ fetching: true });
+    };
+
+    const onResponseExtended = response => {
+      this.setState({ fetching: false });
+      onResponse(response);
+    };
+
+    const onErrorExtended = error => {
+      this.setState({ fetching: false, error: true });
+      onError(error);
+    };
+
+    const valueToSend = options ? value.label : value;
+
+    onClick(
+      valueToSend,
+      onWrongFormat,
+      onSend,
+      onResponseExtended,
+      onErrorExtended
+    );
   };
 
   render = () => {
-    const { value, error } = this.state;
+    const { value, fetching, error } = this.state;
     const {
       breakResponsive,
       type,
@@ -48,6 +97,7 @@ class InputWithButton extends React.Component {
       buttonText,
       buttonClass: customButtonClass,
       onClick,
+      options,
     } = this.props;
 
     const mainClass = breakResponsive ? style.mainResponsive : style.main;
@@ -58,17 +108,38 @@ class InputWithButton extends React.Component {
       breakResponsive ? style.buttonResponsive : style.button
     } ${customButtonClass}`;
 
+    const input = options ? (
+      <div className={inputClass}>
+        <Select
+          isClearable
+          onBlurResetsInput={false}
+          styles={selectStyles}
+          value={value}
+          onChange={this.onChangeOption}
+          onKeyDown={event => {
+            this.onChange(event.key);
+          }}
+          options={options}
+          placeholder={placeholder}
+        />
+      </div>
+    ) : (
+      <input
+        className={inputClass}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={event => {
+          this.onChange(event.target.value);
+        }}
+      />
+    );
+
     return (
       <div className={mainClass}>
-        <input
-          className={inputClass}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={this.onChange}
-        />
+        {input}
         <Button className={buttonClass} onClick={this.onClick}>
-          {buttonText}
+          {fetching ? <Spinner /> : buttonText}
         </Button>
       </div>
     );
@@ -83,7 +154,10 @@ InputWithButton.propTypes = {
   buttonText: PropTypes.string,
   buttonClass: PropTypes.string,
   onClick: PropTypes.func,
+  onResponse: PropTypes.func,
+  onError: PropTypes.func,
   onChange: PropTypes.func,
+  options: PropTypes.array,
 };
 
 InputWithButton.defaultProps = {
@@ -94,6 +168,8 @@ InputWithButton.defaultProps = {
   buttonText: "",
   buttonClass: "",
   onClick: () => null,
+  onResponse: () => null,
+  onError: error => console.log(error),
   onChange: () => null,
 };
 

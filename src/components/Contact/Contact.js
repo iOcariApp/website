@@ -66,6 +66,7 @@ class Contact extends React.Component {
     e.preventDefault();
 
     if (verified) {
+      // Get reason.label
       console.log("Form submited", this.state);
     }
   };
