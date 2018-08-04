@@ -1,6 +1,9 @@
 import React from "react";
 import style from "./contact.scss";
 
+import ReCAPTCHA from "react-google-recaptcha";
+import { isMobile } from "react-device-detect";
+
 import iconXXL from "./icon-xxl.svg";
 
 import Dropdown from "components/Dropdown";
@@ -21,6 +24,7 @@ class Contact extends React.Component {
     name: "",
     email: "",
     description: "",
+    verified: false,
   };
 
   onChange = event => {
@@ -29,9 +33,18 @@ class Contact extends React.Component {
     this.setState({ [name]: value });
   };
 
+  onCaptcha = recaptcha => {
+    this.setState({ verified: true });
+  };
+
   onSubmit = e => {
+    const { verified } = this.state;
+
     e.preventDefault();
-    console.log("Form submited", this.state);
+
+    if (verified) {
+      console.log("Form submited", this.state);
+    }
   };
 
   render = () => {
@@ -82,6 +95,14 @@ class Contact extends React.Component {
               value={description}
               onChange={this.onChange}
             />
+            <div className={style.captcha}>
+              <ReCAPTCHA
+                ref="recaptcha"
+                sitekey="6LesQ2gUAAAAAEG8MS7f5pTbLbGXz5lErH7b-XbH"
+                onChange={this.onCaptcha}
+                size={isMobile ? "compact" : "normal"}
+              />
+            </div>
             <Button className={style.button} type="submit">
               ENVIAR
             </Button>
