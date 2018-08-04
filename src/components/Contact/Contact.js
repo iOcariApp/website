@@ -3,20 +3,39 @@ import style from "./contact.scss";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { isMobile } from "react-device-detect";
+import Select from "react-select";
 
 import iconXXL from "./icon-xxl.svg";
 
-import Dropdown from "components/Dropdown";
 import Input from "components/Input";
 import Button from "components/Button";
+import WithLabel from "components/WithLabel";
 
 const options = [
-  "Apuntarme a la beta",
-  "Pregunta",
-  "Comentario",
-  "Soy tienda, quiero más información",
-  "Otro",
+  { value: "Apuntarme a la beta", label: "Apuntarme a la beta" },
+  { value: "Pregunta", label: "Pregunta" },
+  { value: "Comentario", label: "Comentario" },
+  {
+    value: "Soy tienda, quiero más información",
+    label: "Soy tienda, quiero más información",
+  },
+  { value: "Otro", label: "Otro" },
 ];
+
+const selectStyles = {
+  valueContainer: base => ({
+    ...base,
+    height: style.inputHeight,
+  }),
+  container: base => ({
+    ...base,
+    borderRadius: 7,
+  }),
+  option: base => ({
+    ...base,
+    color: "#333333",
+  }),
+};
 
 class Contact extends React.Component {
   state = {
@@ -31,6 +50,10 @@ class Contact extends React.Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({ [name]: value });
+  };
+
+  onChangeAutocomplete = value => {
+    this.onChange({ target: { name: "reason", value } });
   };
 
   onCaptcha = recaptcha => {
@@ -62,15 +85,17 @@ class Contact extends React.Component {
             </p>
           </div>
           <form className={style.form} onSubmit={this.onSubmit}>
-            <Dropdown
-              label="Contacto por"
-              classNameRoot={style.reason}
-              options={options}
-              value={reason}
-              onChange={label => {
-                this.onChange({ target: { name: "reason", value: label } });
-              }}
-            />
+            <WithLabel label="Contacto por">
+              <div className={style.reason}>
+                <Select
+                  styles={selectStyles}
+                  isClearable
+                  value={reason}
+                  onChange={this.onChangeAutocomplete}
+                  options={options}
+                />
+              </div>
+            </WithLabel>
             <Input
               type="text"
               label="Mi nombre es"

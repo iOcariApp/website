@@ -2,42 +2,11 @@
 
 .main {
   width: 100%;
-  min-height: 66px;
+  min-height: $input-height;
   border-radius: 7px;
   border: none;
   font-size: 18px;
   color: #5f5f5f;
   padding: 14px;
   background-color: white;
-}
-
-.label {
-  display: block;
-  font-size: 16px;
-  margin: 18px 0;
-  text-align: left;
-}
-
-@media screen and(min-width: $md-anchor) {
-  .label {
-    font-size: 18px;
-  }
-}
-
-@media screen and(min-width: $lg-anchor) {
-  .label {
-    font-size: 20px;
-  }
-}
-
-@media screen and(min-width: $xl-anchor) {
-  .label {
-    font-size: 22px;
-  }
-}
-
-@media screen and(min-width: $xxl-anchor) {
-  .label {
-    font-size: 24px;
-  }
 }

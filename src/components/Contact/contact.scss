@@ -1,5 +1,9 @@
 @import "../variables.scss";
 
+:export {
+  inputHeight: $input-height;
+}
+
 .main {
   color: white;
   background-color: #0277bd;
