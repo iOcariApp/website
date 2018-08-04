@@ -2,6 +2,7 @@ import React from "react";
 import style from "./footer.scss";
 
 import { Link } from "react-router-dom";
+import OpenApp from "react-open-app";
 
 import facebook from "./facebook.svg";
 import twitter from "./twitter.svg";
@@ -13,30 +14,21 @@ const Footer = () => (
   <div className={style.main}>
     <div className={style.maxWidth}>
       <div className={style.social}>
-        <a
-          className={style.socialItem}
-          href="https://www.facebook.com/iOcariApp/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={facebook} alt="Facebook logo" />
-        </a>
-        <a
-          className={style.socialItem}
-          href="https://twitter.com/iOcariApp?lang=es"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={twitter} alt="Twitter logo" />
-        </a>
-        <a
-          className={style.socialItem}
-          href="https://www.instagram.com/iocari/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={instagram} alt="Instagram logo" />
-        </a>
+        <OpenApp href="https://www.facebook.com/566205457090856" blank>
+          <div className={style.socialItem}>
+            <img src={facebook} alt="Facebook logo" />
+          </div>
+        </OpenApp>
+        <OpenApp href="https://twitter.com/iOcariApp" blank>
+          <div className={style.socialItem}>
+            <img src={twitter} alt="Twitter logo" />
+          </div>
+        </OpenApp>
+        <OpenApp href="https://www.instagram.com/iocari/" blank>
+          <div className={style.socialItem}>
+            <img src={instagram} alt="Instagram logo" />
+          </div>
+        </OpenApp>
       </div>
       <a
         href="mailto:contacto@iocariboardgames.com"
