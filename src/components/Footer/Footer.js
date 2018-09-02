@@ -14,21 +14,23 @@ const Footer = () => (
   <div className={style.main}>
     <div className={style.maxWidth}>
       <div className={style.social}>
-        <OpenApp href="https://www.facebook.com/566205457090856" blank>
-          <div className={style.socialItem}>
+        <div className={style.socialItem}>
+          <OpenApp href="https://www.facebook.com/566205457090856" blank>
             <img src={facebook} alt="Facebook logo" />
-          </div>
-        </OpenApp>
-        <OpenApp href="https://twitter.com/iOcariApp" blank>
-          <div className={style.socialItem}>
+          </OpenApp>
+        </div>
+
+        <div className={style.socialItem}>
+          <OpenApp href="https://twitter.com/iOcariApp" blank>
             <img src={twitter} alt="Twitter logo" />
-          </div>
-        </OpenApp>
-        <OpenApp href="https://www.instagram.com/iocari/" blank>
-          <div className={style.socialItem}>
+          </OpenApp>
+        </div>
+
+        <div className={style.socialItem}>
+          <OpenApp href="https://www.instagram.com/iocari/" blank>
             <img src={instagram} alt="Instagram logo" />
-          </div>
-        </OpenApp>
+          </OpenApp>
+        </div>
       </div>
       <a
         href="mailto:contacto@iocariboardgames.com"
