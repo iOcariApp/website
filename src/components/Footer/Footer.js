@@ -54,7 +54,8 @@ const Footer = () => (
         <p className={style.copyright}>Copyright&copy; 2018</p>
         <Link to="/">Términos y condiciones</Link>
         <Link to="/">Política de privacidad</Link>
-        <Link to="/">Política de cookies</Link>
+        <Link to="/">Normas de Uso</Link>
+        <Link to="/">Aviso legal</Link>
       </div>
     </div>
   </div>
