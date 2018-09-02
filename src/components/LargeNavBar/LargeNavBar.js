@@ -28,7 +28,7 @@ const LargeNavBar = ({ background, solid, sticky, match, location }) => {
             </Link>
           </div>
           <div className={style.menu}>
-            {routes.slice(1).map(route => (
+            {routes.slice(1, 4).map(route => (
               <HashLink
                 scroll={scrollToHash}
                 key={`navbar-${route.label}`}

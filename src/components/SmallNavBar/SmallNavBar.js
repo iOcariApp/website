@@ -41,7 +41,7 @@ class SmallNavBar extends React.Component {
         </nav>
         {open && (
           <div className={style.collapsableMenu}>
-            {routes.slice(1).map(route => (
+            {routes.slice(1, 4).map(route => (
               <HashLink
                 scroll={scrollToHash}
                 key={`navbar-${route.label}`}

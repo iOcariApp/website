@@ -52,10 +52,10 @@ const Footer = () => (
       </div>
       <div className={style.legals}>
         <p className={style.copyright}>Copyright&copy; 2018</p>
-        <Link to="/">Términos y condiciones</Link>
-        <Link to="/">Política de privacidad</Link>
-        <Link to="/">Normas de Uso</Link>
-        <Link to="/">Aviso legal</Link>
+        <Link to="/terminos-y-condiciones">Términos y condiciones</Link>
+        <Link to="/politica-de-privacidad">Política de privacidad</Link>
+        <Link to="/normas-de-uso">Normas de Uso</Link>
+        <Link to="/aviso-legal">Aviso legal</Link>
       </div>
     </div>
   </div>
