@@ -96,7 +96,6 @@ class InputWithButton extends React.Component {
       inputClass: customInputClass,
       buttonText,
       buttonClass: customButtonClass,
-      onClick,
       options,
     } = this.props;
 
