@@ -7,6 +7,8 @@ import Select from "react-select";
 
 import iconXXL from "./icon-xxl.svg";
 
+import { sendContactForm } from "db";
+
 import Input from "components/Input";
 import Button from "components/Button";
 import WithLabel from "components/WithLabel";
@@ -42,7 +44,7 @@ class Contact extends React.Component {
     reason: "",
     name: "",
     email: "",
-    description: "",
+    content: "",
     verified: false,
   };
 
@@ -61,18 +63,23 @@ class Contact extends React.Component {
   };
 
   onSubmit = e => {
-    const { verified } = this.state;
+    const { verified, ...rest } = this.state;
 
     e.preventDefault();
 
     if (verified) {
       // Get reason.label
       console.log("Form submited", this.state);
+      const {
+        reason: { value },
+        ...otherFields
+      } = rest;
+      sendContactForm({ reason: value, ...otherFields });
     }
   };
 
   render = () => {
-    const { reason, name, email, description } = this.state;
+    const { reason, name, email, content } = this.state;
     return (
       <div className={style.main}>
         <div className={style.maxWidth}>
@@ -117,8 +124,8 @@ class Contact extends React.Component {
               isTextarea
               className={style.textarea}
               label="Descripción de razón de contacto"
-              name="description"
-              value={description}
+              name="content"
+              value={content}
               onChange={this.onChange}
             />
             <div className={style.captcha}>

@@ -25,3 +25,8 @@ export const subscribeEmail = (
     onWrongFormat();
   }
 };
+
+export const sendContactForm = data =>
+  axios.post("http://www.paddla.es/patricia/sendMail.php", {
+    ...data,
+  });
