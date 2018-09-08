@@ -1,7 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 
+import Media from "react-media";
 import { withRouter } from "react-router-dom";
 import { routes } from "routes";
+
+import variables from "components/variables.scss";
 
 import SmallNavBar from "components/SmallNavBar";
 import LargeNavBar from "components/LargeNavBar";
@@ -32,14 +35,15 @@ class NavBar extends React.PureComponent {
     const { sticky } = this.state;
 
     return (
-      <Fragment>
-        <div className="sm">
-          <SmallNavBar />
-        </div>
-        <div className="md">
-          <LargeNavBar solid={this.fillBg()} sticky={sticky} />
-        </div>
-      </Fragment>
+      <Media query={{ maxWidth: variables.mdAnchor }}>
+        {matches =>
+          matches ? (
+            <SmallNavBar />
+          ) : (
+            <LargeNavBar solid={this.fillBg()} sticky={sticky} />
+          )
+        }
+      </Media>
     );
   };
 }

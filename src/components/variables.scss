@@ -22,3 +22,11 @@ $input-height: 66px;
   max-width: $max-width-header;
   margin: 0 auto;
 }
+
+:export {
+  smAnchor: $sm-anchor;
+  mdAnchor: $md-anchor;
+  lgAnchor: $lg-anchor;
+  xlAnchor: $xl-anchor;
+  xxlAnchor: $xxl-anchor;
+}

@@ -7,7 +7,7 @@ import Features from "components/Features";
 import DevCorner from "components/DevCorner";
 import MobilePreview from "components/MobilePreview";
 import VideoSection from "components/VideoSection";
-import Map from "components/Map";
+import CountriesVote from "components/CountriesVote";
 import NextFeatures from "components/NextFeatures";
 import CTABottom from "components/CTABottom";
 import Footer from "components/Footer";
@@ -21,7 +21,7 @@ const Home = () => (
     <DevCorner />
     <MobilePreview />
     <VideoSection />
-    <Map />
+    <CountriesVote />
     <NextFeatures />
     <WithOverlay>
       <CTABottom />

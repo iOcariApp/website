@@ -52,10 +52,6 @@
   }
 
   @media screen and (min-width: $md-anchor) {
-    .sm {
-      display: none;
-    }
-
     .md {
       display: block;
     }
@@ -74,14 +70,14 @@
   }
 
   @media screen and (min-width: $xxl-anchor) {
+    .xxl {
+      display: block;
+    }
+
     h2 {
       font-size: 48px;
       line-height: 64px;
       margin-bottom: 60px;
-    }
-
-    .xxl {
-      display: block;
     }
   }
 }
