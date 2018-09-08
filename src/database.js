@@ -12,7 +12,7 @@ export const subscribeEmail = (
   if (emailRegex.test(email)) {
     onSend();
     axios
-      .post("http://www.paddla.es/patricia/addMail.php", {
+      .post("https://www.paddla.es/patricia/addMail.php", {
         email,
       })
       .then(response => {
@@ -27,6 +27,6 @@ export const subscribeEmail = (
 };
 
 export const sendContactForm = data =>
-  axios.post("http://www.paddla.es/patricia/sendMail.php", {
+  axios.post("https://www.paddla.es/patricia/sendMail.php", {
     ...data,
   });
