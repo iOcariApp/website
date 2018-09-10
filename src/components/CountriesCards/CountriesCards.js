@@ -21,15 +21,15 @@ class CountriesCards extends React.Component {
       if (a.exists) return -1;
       return a.votes > b.votes ? -1 : 1;
     });
-    const slicedCountries = moreVotesFirst.slice(0, showing);
-    const filteredCountries = slicedCountries.filter(country =>
+    const filteredCountries = moreVotesFirst.filter(country =>
       country.name.toLowerCase().includes(search.toLowerCase())
     );
+    const slicedCountries = filteredCountries.slice(0, showing);
 
     return (
       <Fragment>
         <div className={style.countries}>
-          {filteredCountries.map(country => (
+          {slicedCountries.map(country => (
             <CardLabel
               key={`country-card-${country.name}`}
               type={country.exists ? "exists" : "default"}
@@ -41,11 +41,11 @@ class CountriesCards extends React.Component {
             />
           ))}
         </div>
-        {showing < countries.length && (
+        {showing < filteredCountries.length && (
           <div className={style.showMore}>
             <CardLabel
               type="border"
-              left={`VER +${countries.length - showing} MÁS`}
+              left={`VER +${filteredCountries.length - showing} MÁS`}
               onClick={this.showMore}
             />
           </div>

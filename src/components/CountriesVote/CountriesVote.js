@@ -4,11 +4,20 @@ import style from "./countries-vote.scss";
 
 import Media from "react-media";
 
+import atlas from "components/Map/atlas.json";
+
 import variables from "components/variables.scss";
 
 import InputWithButton from "components/InputWithButton";
 import CountriesCards from "components/CountriesCards";
 import Map from "components/Map";
+
+const allCountriesNames = atlas.objects.ne_110m_admin_0_countries.geometries.map(
+  geometry => ({
+    name: geometry.properties.NAME,
+    iso: geometry.properties.ISO_A2,
+  })
+);
 
 class CountriesVote extends React.Component {
   state = {
@@ -34,14 +43,22 @@ class CountriesVote extends React.Component {
     if (countryIndex >= 0) {
       const toAdd = voted ? -1 : 1;
       copy[countryIndex].votes = copy[countryIndex].votes + toAdd;
-
-      this.setState(state => ({ voted: !state.voted, countries: copy }));
+    } else {
+      copy.push({
+        name: votedCountry,
+        votes: 1,
+        exists: false,
+        iso: allCountriesNames.find(country => country.name === votedCountry)
+          .iso,
+      });
     }
+
+    this.setState(state => ({ voted: !state.voted, countries: copy }));
   };
 
   getSuggestions = () =>
-    this.state.countries.map(country => ({
-      value: country.iso,
+    allCountriesNames.map(country => ({
+      value: country.name,
       label: country.name,
     }));
 
