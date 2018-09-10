@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./card-label.scss";
 
-import cubeLogo from "./cube-logo.svg";
+import cubeLogo from "components/CountriesVote/cube-logo.svg";
 
 const CardLabel = ({ type, centered, left, right, onClick }) => (
   <div className={style[type]} onClick={onClick}>

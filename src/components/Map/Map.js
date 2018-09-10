@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import style from "./map.scss";
 
@@ -14,6 +14,8 @@ import { geoCentroid } from "d3-geo";
 import { feature } from "topojson-client";
 
 import atlas from "./atlas.json";
+
+import cubeLogo from "components/CountriesVote/cube-logo.svg";
 
 const blueBubble = (
   <path
@@ -137,21 +139,35 @@ const Map = ({ countries, vote }) => {
                   vote(marker.name);
                 }}
               >
-                {marker.exists ? pinkBubble : blueBubble}
-                <text
-                  textAnchor="middle"
-                  x={35}
-                  y={45}
-                  style={{
-                    fill: "#FFFFFF",
-                    stroke: "none",
-                    fontSize: 24,
-                    cursor: "pointer",
-                  }}
-                  transform="translate(-70,-70)"
-                >
-                  {`+${marker.votes}`}
-                </text>
+                {marker.exists ? (
+                  <Fragment>
+                    {pinkBubble}
+                    <image
+                      xlinkHref={cubeLogo}
+                      width={39}
+                      height={35}
+                      transform="translate(-55,-53)"
+                    />
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    {blueBubble}
+                    <text
+                      textAnchor="middle"
+                      x={35}
+                      y={45}
+                      style={{
+                        fill: "#FFFFFF",
+                        stroke: "none",
+                        fontSize: 24,
+                        cursor: "pointer",
+                      }}
+                      transform="translate(-70,-70)"
+                    >
+                      {`+${marker.votes}`}
+                    </text>
+                  </Fragment>
+                )}
               </Marker>
             ))}
           </Markers>
