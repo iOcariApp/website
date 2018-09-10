@@ -43,13 +43,16 @@ const pinkBubble = (
 
 const exclude = ["Antarctica"];
 
-const getCountryCenter = feature => geoCentroid(feature);
-
+const getContinent = geography => geography.properties.CONTINENT;
 const getISO = geography => geography.properties.ISO_A2;
+const getName = geography => geography.properties.NAME;
+
+const getCountryCenter = feature => geoCentroid(feature);
 
 const features = feature(atlas, atlas.objects[Object.keys(atlas.objects)[0]])
   .features;
 const countryCenters = features.map(feature => ({
+  name: getName(feature),
   iso: getISO(feature),
   coordinates: getCountryCenter(feature),
 }));
@@ -68,114 +71,136 @@ const getMarkers = countries =>
 const countryHasVotes = (countries, countryISO) =>
   countries.findIndex(sameISO(countryISO)) >= 0;
 
-const getCountryNameByISO = (countries, countryISO) =>
-  countries.find(sameISO(countryISO)).name;
+const getCountryNameByISO = countryISO =>
+  countryCenters.find(sameISO(countryISO)).name;
 
-const Map = ({ countries, vote }) => {
-  const markers = getMarkers(countries);
+class Map extends React.Component {
+  state = {
+    shouldUpdate: false,
+  };
 
-  return (
-    <div className={style.main}>
-      <ComposableMap
-        projectionConfig={{ scale: 300 }}
-        width={1400}
-        height={800}
-        style={{
-          width: "100%",
-          height: "auto",
-        }}
-      >
-        <ZoomableGroup center={[10, 20]} disablePanning>
-          <Geographies geography={atlas}>
-            {(geographies, projection) =>
-              geographies.map(
-                (geography, i) =>
-                  exclude.indexOf(geography.properties.CONTINENT) === -1 && (
-                    <Geography
-                      key={`geography-${i}`}
-                      geography={geography}
-                      projection={projection}
-                      onClick={() => {
-                        vote(getCountryNameByISO(markers, getISO(geography)));
-                      }}
-                      style={{
-                        default: {
-                          fill: countryHasVotes(countries, getISO(geography))
-                            ? "#0DBED1"
-                            : "#028C9B",
-                          stroke: "#FFFFFF",
-                          strokeWidth: 0.5,
-                          outline: "none",
-                        },
-                        hover: {
-                          fill: "#0DBED1",
-                          stroke: "#FFFFFF",
-                          strokeWidth: 0.5,
-                          outline: "none",
-                        },
-                        pressed: {
-                          fill: "#0DBED1",
-                          stroke: "#FFFFFF",
-                          strokeWidth: 0.5,
-                          outline: "none",
-                        },
-                      }}
-                    />
-                  )
-              )
-            }
-          </Geographies>
-          <Markers>
-            {markers.map((marker, i) => (
-              <Marker
-                key={`marker-${i}`}
-                marker={marker}
-                style={{
-                  default: { stroke: "#455A64" },
-                  hover: { stroke: "#FF5722" },
-                  pressed: { stroke: "#FF5722" },
-                }}
-                onClick={() => {
-                  vote(marker.name);
-                }}
-              >
-                {marker.exists ? (
-                  <Fragment>
-                    {pinkBubble}
-                    <image
-                      xlinkHref={cubeLogo}
-                      width={39}
-                      height={35}
-                      transform="translate(-55,-53)"
-                    />
-                  </Fragment>
-                ) : (
-                  <Fragment>
-                    {blueBubble}
-                    <text
-                      textAnchor="middle"
-                      x={35}
-                      y={45}
-                      style={{
-                        fill: "#FFFFFF",
-                        stroke: "none",
-                        fontSize: 24,
-                        cursor: "pointer",
-                      }}
-                      transform="translate(-70,-70)"
-                    >
-                      {`+${marker.votes}`}
-                    </text>
-                  </Fragment>
-                )}
-              </Marker>
-            ))}
-          </Markers>
-        </ZoomableGroup>
-      </ComposableMap>
-    </div>
-  );
-};
+  onClick = name => {
+    const { vote } = this.props;
+
+    vote(name);
+    this.setState(
+      {
+        shouldUpdate: true,
+      },
+      () => {
+        this.setState({ shouldUpdate: false });
+      }
+    );
+  };
+
+  render() {
+    const { shouldUpdate } = this.state;
+    const { countries } = this.props;
+    const markers = getMarkers(countries);
+
+    return (
+      <div className={style.main}>
+        <ComposableMap
+          projectionConfig={{ scale: 300 }}
+          width={1400}
+          height={800}
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        >
+          <ZoomableGroup center={[10, 20]} disablePanning>
+            <Geographies geography={atlas} disableOptimization={shouldUpdate}>
+              {(geographies, projection) =>
+                geographies.map(
+                  (geography, i) =>
+                    exclude.indexOf(getContinent(geography)) === -1 && (
+                      <Geography
+                        key={`geography-${i}`}
+                        geography={geography}
+                        projection={projection}
+                        onClick={() => {
+                          this.onClick(getCountryNameByISO(getISO(geography)));
+                        }}
+                        style={{
+                          default: {
+                            fill: countryHasVotes(countries, getISO(geography))
+                              ? "#0DBED1"
+                              : "#028C9B",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                          },
+                          hover: {
+                            fill: "#0DBED1",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                          },
+                          pressed: {
+                            fill: "#0DBED1",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                          },
+                        }}
+                      />
+                    )
+                )
+              }
+            </Geographies>
+            <Markers>
+              {markers.map((marker, i) => (
+                <Marker
+                  key={`marker-${i}`}
+                  marker={marker}
+                  style={{
+                    default: { stroke: "#455A64" },
+                    hover: { stroke: "#FF5722" },
+                    pressed: { stroke: "#FF5722" },
+                  }}
+                  onClick={() => {
+                    this.onClick(marker.name);
+                  }}
+                >
+                  {marker.exists ? (
+                    <Fragment>
+                      {pinkBubble}
+                      <image
+                        xlinkHref={cubeLogo}
+                        width={39}
+                        height={35}
+                        transform="translate(-55,-53)"
+                      />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      {blueBubble}
+                      <text
+                        textAnchor="middle"
+                        x={35}
+                        y={45}
+                        style={{
+                          fill: "#FFFFFF",
+                          stroke: "none",
+                          fontSize: 24,
+                          cursor: "pointer",
+                        }}
+                        transform="translate(-70,-70)"
+                      >
+                        {`+${marker.votes}`}
+                      </text>
+                    </Fragment>
+                  )}
+                </Marker>
+              ))}
+            </Markers>
+          </ZoomableGroup>
+        </ComposableMap>
+      </div>
+    );
+  }
+}
 
 Map.propTypes = {
   countries: PropTypes.array,

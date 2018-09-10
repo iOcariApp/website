@@ -21,7 +21,7 @@ const allCountriesNames = atlas.objects.ne_110m_admin_0_countries.geometries.map
 
 class CountriesVote extends React.Component {
   state = {
-    voted: false,
+    voted: "",
     countries: this.props.countries,
     search: "",
   };
@@ -34,6 +34,7 @@ class CountriesVote extends React.Component {
     const { voted, countries } = this.state;
 
     if (votedCountry === "") return;
+    if (voted !== "" && votedCountry !== voted) return;
 
     const copy = countries;
     const countryIndex = copy.findIndex(
@@ -41,7 +42,7 @@ class CountriesVote extends React.Component {
     );
 
     if (countryIndex >= 0) {
-      const toAdd = voted ? -1 : 1;
+      const toAdd = voted !== "" ? -1 : 1;
       copy[countryIndex].votes = copy[countryIndex].votes + toAdd;
     } else {
       copy.push({
@@ -53,7 +54,10 @@ class CountriesVote extends React.Component {
       });
     }
 
-    this.setState(state => ({ voted: !state.voted, countries: copy }));
+    this.setState(state => ({
+      voted: state.voted === "" ? votedCountry : "",
+      countries: copy,
+    }));
   };
 
   getSuggestions = () =>
@@ -80,7 +84,7 @@ class CountriesVote extends React.Component {
                 <InputWithButton
                   placeholder="País"
                   inputClass={style.input}
-                  buttonText={voted ? "- 1" : "+ 1"}
+                  buttonText={voted !== "" ? "- 1" : "+ 1"}
                   buttonClass={style.inputButton}
                   onClick={this.onVote}
                   onChange={this.onChange}
