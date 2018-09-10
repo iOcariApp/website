@@ -34,16 +34,24 @@ class CountriesVote extends React.Component {
     const { voted, countries } = this.state;
 
     if (votedCountry === "") return;
-    if (voted !== "" && votedCountry !== voted) return;
 
     const copy = countries;
+
+    // undo previous vote
+    if (voted !== "") {
+      const votedCountryIndex = copy.findIndex(
+        country => country.name.toLowerCase() === voted.toLowerCase()
+      );
+      copy[votedCountryIndex].votes = copy[votedCountryIndex].votes - 1;
+    }
+
+    // do new vote
     const countryIndex = copy.findIndex(
       country => country.name.toLowerCase() === votedCountry.toLowerCase()
     );
 
     if (countryIndex >= 0) {
-      const toAdd = voted !== "" ? -1 : 1;
-      copy[countryIndex].votes = copy[countryIndex].votes + toAdd;
+      copy[countryIndex].votes = copy[countryIndex].votes + 1;
     } else {
       copy.push({
         name: votedCountry,
@@ -54,6 +62,7 @@ class CountriesVote extends React.Component {
       });
     }
 
+    // finally update state
     this.setState(state => ({
       voted: state.voted === "" ? votedCountry : "",
       countries: copy,
