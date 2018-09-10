@@ -36,20 +36,22 @@ class CountriesVote extends React.Component {
     if (votedCountry === "") return;
 
     const copy = countries;
+    const sameCountryName = countryName => country =>
+      country.name.toLowerCase() === countryName.toLowerCase();
+
+    // check already exists
+    const countryIndex = copy.findIndex(sameCountryName(votedCountry));
+    if (countries[countryIndex] && countries[countryIndex].exists) return;
 
     // undo previous vote
     if (voted !== "") {
-      const votedCountryIndex = copy.findIndex(
-        country => country.name.toLowerCase() === voted.toLowerCase()
-      );
-      copy[votedCountryIndex].votes = copy[votedCountryIndex].votes - 1;
+      const votedCountryIndex = copy.findIndex(sameCountryName(voted));
+      if (votedCountryIndex >= 0) {
+        copy[votedCountryIndex].votes = copy[votedCountryIndex].votes - 1;
+      }
     }
 
     // do new vote
-    const countryIndex = copy.findIndex(
-      country => country.name.toLowerCase() === votedCountry.toLowerCase()
-    );
-
     if (countryIndex >= 0) {
       copy[countryIndex].votes = copy[countryIndex].votes + 1;
     } else {
@@ -57,16 +59,15 @@ class CountriesVote extends React.Component {
         name: votedCountry,
         votes: 1,
         exists: false,
-        iso: allCountriesNames.find(country => country.name === votedCountry)
-          .iso,
+        iso: allCountriesNames.find(sameCountryName(votedCountry)).iso,
       });
     }
 
     // finally update state
-    this.setState(state => ({
-      voted: state.voted === "" ? votedCountry : "",
+    this.setState({
+      voted: votedCountry,
       countries: copy,
-    }));
+    });
   };
 
   getSuggestions = () =>
@@ -76,8 +77,6 @@ class CountriesVote extends React.Component {
     }));
 
   render() {
-    const { voted } = this.state;
-
     return (
       <Media query={{ maxWidth: variables.mdAnchor }}>
         {matches => (
@@ -93,7 +92,7 @@ class CountriesVote extends React.Component {
                 <InputWithButton
                   placeholder="País"
                   inputClass={style.input}
-                  buttonText={voted !== "" ? "- 1" : "+ 1"}
+                  buttonText="+ 1"
                   buttonClass={style.inputButton}
                   onClick={this.onVote}
                   onChange={this.onChange}
@@ -120,13 +119,13 @@ CountriesVote.propTypes = {
 CountriesVote.defaultProps = {
   countries: [
     {
-      name: "España",
+      name: "Spain",
       votes: 10,
       exists: true,
       iso: "ES",
     },
     {
-      name: "México",
+      name: "Mexico",
       votes: 3,
       exists: false,
       iso: "MX",

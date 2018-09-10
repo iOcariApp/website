@@ -63,13 +63,15 @@ const getCountryMarkerCoordinates = countryISO =>
   countryCenters.find(sameISO(countryISO)).coordinates;
 
 const getMarkers = countries =>
-  countries.map(country => ({
+  countries.filter(country => country.votes > 0).map(country => ({
     ...country,
     coordinates: getCountryMarkerCoordinates(country.iso),
   }));
 
-const countryHasVotes = (countries, countryISO) =>
-  countries.findIndex(sameISO(countryISO)) >= 0;
+const countryHasVotes = (countries, countryISO) => {
+  const country = countries.find(sameISO(countryISO));
+  return country && country.votes > 0;
+};
 
 const getCountryNameByISO = countryISO =>
   countryCenters.find(sameISO(countryISO)).name;
@@ -96,6 +98,7 @@ class Map extends React.Component {
   render() {
     const { shouldUpdate } = this.state;
     const { countries } = this.props;
+
     const markers = getMarkers(countries);
 
     return (
@@ -119,6 +122,7 @@ class Map extends React.Component {
                         key={`geography-${i}`}
                         geography={geography}
                         projection={projection}
+                        tabable={false}
                         onClick={() => {
                           this.onClick(getCountryNameByISO(getISO(geography)));
                         }}
@@ -154,10 +158,11 @@ class Map extends React.Component {
                 <Marker
                   key={`marker-${i}`}
                   marker={marker}
+                  tabable={false}
                   style={{
-                    default: { stroke: "#455A64" },
-                    hover: { stroke: "#FF5722" },
-                    pressed: { stroke: "#FF5722" },
+                    default: { outline: "none" },
+                    hover: { outline: "none" },
+                    pressed: { outline: "none" },
                   }}
                   onClick={() => {
                     this.onClick(marker.name);
