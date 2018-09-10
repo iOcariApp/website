@@ -10,17 +10,6 @@ import InputWithButton from "components/InputWithButton";
 import CountriesCards from "components/CountriesCards";
 import Map from "components/Map";
 
-const options = [
-  { value: "España", label: "España" },
-  { value: "Chile", label: "Chile" },
-  { value: "Cuba", label: "Cuba" },
-  {
-    value: "Argentina",
-    label: "Argentina",
-  },
-  { value: "México", label: "México" },
-];
-
 class CountriesVote extends React.Component {
   state = {
     voted: false,
@@ -50,6 +39,12 @@ class CountriesVote extends React.Component {
     }
   };
 
+  getSuggestions = () =>
+    this.state.countries.map(country => ({
+      value: country.iso,
+      label: country.name,
+    }));
+
   render() {
     const { voted } = this.state;
 
@@ -72,10 +67,14 @@ class CountriesVote extends React.Component {
                   buttonClass={style.inputButton}
                   onClick={this.onVote}
                   onChange={this.onChange}
-                  options={options}
+                  options={this.getSuggestions()}
                 />
               </div>
-              {matches ? <CountriesCards {...this.state} /> : <Map />}
+              {matches ? (
+                <CountriesCards {...this.state} vote={this.onVote} />
+              ) : (
+                <Map countries={this.state.countries} vote={this.onVote} />
+              )}
             </div>
           </div>
         )}
@@ -94,26 +93,31 @@ CountriesVote.defaultProps = {
       name: "España",
       votes: 10,
       exists: true,
+      iso: "ES",
     },
     {
       name: "México",
       votes: 3,
       exists: false,
+      iso: "MX",
     },
     {
       name: "Chile",
       votes: 20,
       exists: false,
+      iso: "CL",
     },
     {
       name: "Argentina",
       votes: 7,
       exists: false,
+      iso: "AR",
     },
     {
       name: "Cuba",
       votes: 13,
       exists: false,
+      iso: "CU",
     },
   ],
 };

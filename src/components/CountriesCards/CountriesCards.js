@@ -15,7 +15,7 @@ class CountriesCards extends React.Component {
 
   render = () => {
     const { showing } = this.state;
-    const { countries, search } = this.props;
+    const { countries, search, vote } = this.props;
 
     const moreVotesFirst = countries.sort((a, b) => {
       if (a.exists) return -1;
@@ -36,7 +36,7 @@ class CountriesCards extends React.Component {
               left={country.name}
               right={`+${country.votes}`}
               onClick={() => {
-                if (!country.exists) this.onVote(country.name);
+                if (!country.exists) vote(country.name);
               }}
             />
           ))}
@@ -58,6 +58,7 @@ class CountriesCards extends React.Component {
 CountriesCards.propTypes = {
   countries: PropTypes.array,
   search: PropTypes.string,
+  vote: PropTypes.func,
 };
 
 export default CountriesCards;
