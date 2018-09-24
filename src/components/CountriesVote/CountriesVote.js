@@ -4,6 +4,8 @@ import style from "./countries-vote.scss";
 
 import Media from "react-media";
 
+import { voteCountry } from "db";
+
 import atlas from "components/Map/atlas.json";
 
 import variables from "components/variables.scss";
@@ -48,19 +50,23 @@ class CountriesVote extends React.Component {
       const votedCountryIndex = copy.findIndex(sameCountryName(voted));
       if (votedCountryIndex >= 0) {
         copy[votedCountryIndex].votes = copy[votedCountryIndex].votes - 1;
+        this.updateDatabase(copy[votedCountryIndex].iso, 0);
       }
     }
 
     // do new vote
     if (countryIndex >= 0) {
       copy[countryIndex].votes = copy[countryIndex].votes + 1;
+      this.updateDatabase(copy[countryIndex].iso, 1);
     } else {
+      const iso = allCountriesNames.find(sameCountryName(votedCountry)).iso;
       copy.push({
         name: votedCountry,
         votes: 1,
         exists: false,
-        iso: allCountriesNames.find(sameCountryName(votedCountry)).iso,
+        iso,
       });
+      this.updateDatabase(iso, 1);
     }
 
     // finally update state
@@ -68,6 +74,10 @@ class CountriesVote extends React.Component {
       voted: votedCountry,
       countries: copy,
     });
+  };
+
+  updateDatabase = (iso, vote) => {
+    voteCountry({ country: iso, vote });
   };
 
   getSuggestions = () =>

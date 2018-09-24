@@ -30,3 +30,8 @@ export const sendContactForm = data =>
   axios.post("https://www.paddla.es/patricia/sendMail.php", {
     ...data,
   });
+
+export const voteCountry = data =>
+  axios.post("https://www.paddla.es/patricia/addCountryVote.php", {
+    ...data,
+  });
