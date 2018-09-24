@@ -20,7 +20,6 @@ const Home = () => (
     <Features />
     <DevCorner />
     <MobilePreview />
-    <VideoSection />
     <CountriesVote />
     <NextFeatures />
     <WithOverlay>
