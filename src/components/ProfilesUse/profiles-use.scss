@@ -1,0 +1,150 @@
+@import "../variables.scss";
+
+$section-blue-color: #0277bd;
+
+$md-width-card: 200px;
+$lg-width-card: 230px;
+$xl-width-card: 328px;
+
+$min-height-card: 296px;
+
+.main {
+  padding: 46px 18px;
+  background-color: $section-blue-color;
+}
+
+.maxWidth {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.bigProfileContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  flex: 1;
+  padding-top: 35;
+}
+
+.profiles {
+  display: grid;
+  grid-gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.extraPaddingTop {
+  padding-top: 20px;
+}
+
+.releaseFlag {
+  position: absolute;
+  left: -12px;
+  top: -3px;
+
+  > span {
+    position: absolute;
+    left: 25px;
+    top: 9px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  > img {
+    width: 141px;
+  }
+}
+
+.description {
+  flex: 4;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 18px;
+  color: $section-blue-color;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 16px;
+  color: $section-blue-color;
+  line-height: 20px;
+}
+
+.img {
+  width: 91px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: $md-anchor) {
+  .sectionTitle {
+    margin-bottom: 50px;
+  }
+
+  .profiles {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+  }
+
+  .profileCard {
+    width: $md-width-card;
+    height: 100%;
+    min-height: $min-height-card;
+    margin: 0 auto;
+  }
+
+  .bigProfileContainer {
+    .img {
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+@media screen and (min-width: $lg-anchor) {
+  .profileCard {
+    width: $lg-width-card;
+  }
+}
+
+@media screen and (min-width: $xl-anchor) {
+  .profiles {
+    grid-gap: 50px;
+  }
+
+  .profileCard {
+    width: $xl-width-card;
+    min-height: 420px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .bigProfileContainer {
+    .img {
+      width: 148px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (min-width: $xxl-anchor) {
+  .profiles {
+    grid-gap: 140px;
+  }
+}
