@@ -35,3 +35,6 @@ export const voteCountry = data =>
   axios.post("https://www.paddla.es/patricia/addCountryVote.php", {
     ...data,
   });
+
+export const getCountriesVotes = () =>
+  axios.get("https://www.paddla.es/patricia/getCountryVotes.php");

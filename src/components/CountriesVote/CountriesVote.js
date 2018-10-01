@@ -4,7 +4,7 @@ import style from "./countries-vote.scss";
 
 import Media from "react-media";
 
-import { voteCountry } from "db";
+import { voteCountry, getCountriesVotes } from "db";
 
 import atlas from "components/Map/atlas.json";
 
@@ -21,11 +21,27 @@ const allCountriesNames = atlas.objects.ne_110m_admin_0_countries.geometries.map
   })
 );
 
+const getStateFromDatabaseCountries = databaseData => {
+  databaseData.map(country => ({
+    name: country.name,
+    votes: country.votes,
+    exists: country.name === "Spain",
+    iso: country.iso,
+  }));
+};
+
 class CountriesVote extends React.Component {
   state = {
     voted: "",
     countries: this.props.countries,
     search: "",
+  };
+
+  componentDidMount = () => {
+    getCountriesVotes().then(data => {
+      const countries = getStateFromDatabaseCountries(data);
+      this.setState({ countries });
+    });
   };
 
   onChange = search => {
