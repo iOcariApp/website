@@ -21,14 +21,13 @@ const allCountriesNames = atlas.objects.ne_110m_admin_0_countries.geometries.map
   })
 );
 
-const getStateFromDatabaseCountries = databaseData => {
+const getStateFromDatabaseCountries = databaseData =>
   databaseData.map(country => ({
     name: country.name,
-    votes: country.votes,
+    votes: parseInt(country.votes, 10),
     exists: country.name === "Spain",
     iso: country.iso,
   }));
-};
 
 class CountriesVote extends React.Component {
   state = {
@@ -38,8 +37,12 @@ class CountriesVote extends React.Component {
   };
 
   componentDidMount = () => {
+    this.getDatabaseData();
+  };
+
+  getDatabaseData = () => {
     getCountriesVotes().then(data => {
-      const countries = getStateFromDatabaseCountries(data);
+      const countries = getStateFromDatabaseCountries(data.data);
       this.setState({ countries });
     });
   };
@@ -48,52 +51,71 @@ class CountriesVote extends React.Component {
     this.setState({ search });
   };
 
-  onVote = votedCountry => {
+  onVote = votedCountryName => {
     const { voted, countries } = this.state;
 
-    if (votedCountry === "") return;
+    if (votedCountryName === "") return;
 
     const copy = countries;
     const sameCountryName = countryName => country =>
       country.name.toLowerCase() === countryName.toLowerCase();
+    const countryIndex = copy.findIndex(sameCountryName(votedCountryName));
 
-    // check already exists
-    const countryIndex = copy.findIndex(sameCountryName(votedCountry));
+    // if already exists we ignore the vote
     if (countries[countryIndex] && countries[countryIndex].exists) return;
 
     // undo previous vote
     if (voted !== "") {
       const votedCountryIndex = copy.findIndex(sameCountryName(voted));
       if (votedCountryIndex >= 0) {
-        copy[votedCountryIndex].votes = copy[votedCountryIndex].votes - 1;
-        this.updateDatabase(copy[votedCountryIndex].iso, 0);
+        this.unvoteCountry(copy, votedCountryIndex);
       }
     }
 
-    // do new vote
-    if (countryIndex >= 0) {
-      copy[countryIndex].votes = copy[countryIndex].votes + 1;
-      this.updateDatabase(copy[countryIndex].iso, 1);
-    } else {
-      const iso = allCountriesNames.find(sameCountryName(votedCountry)).iso;
-      copy.push({
-        name: votedCountry,
-        votes: 1,
-        exists: false,
-        iso,
-      });
-      this.updateDatabase(iso, 1);
+    const unvotedLastVote = votedCountryName === voted;
+    if (!unvotedLastVote) {
+      // do new vote
+      const isCountryInState = countryIndex >= 0;
+      if (isCountryInState) {
+        this.voteCountry(copy, countryIndex);
+      } else {
+        const iso = allCountriesNames.find(sameCountryName(votedCountryName))
+          .iso;
+        this.voteNewCountry(copy, votedCountryName, iso);
+      }
     }
+  };
 
-    // finally update state
-    this.setState({
-      voted: votedCountry,
-      countries: copy,
+  voteNewCountry = (countries, votedCountryName, iso) => {
+    console.log("New vote", iso);
+    countries.push({
+      name: votedCountryName,
+      votes: 1,
+      exists: false,
+      iso,
+    });
+    voteCountry({ country: iso, vote: 1 }).then(() => {
+      this.getDatabaseData();
+      this.setState({ voted: votedCountryName });
     });
   };
 
-  updateDatabase = (iso, vote) => {
-    voteCountry({ country: iso, vote });
+  voteCountry = (countries, index) => {
+    console.log("Vote", countries[index].iso);
+    countries[index].votes = countries[index].votes + 1;
+    voteCountry({ country: countries[index].iso, vote: 1 }).then(() => {
+      this.getDatabaseData();
+      this.setState({ voted: countries[index].name });
+    });
+  };
+
+  unvoteCountry = (countries, index) => {
+    console.log("Unvote", countries[index].iso);
+    countries[index].votes = countries[index].votes - 1;
+    voteCountry({ country: countries[index].iso, vote: 0 }).then(() => {
+      this.getDatabaseData();
+      this.setState({ voted: "" });
+    });
   };
 
   getSuggestions = () =>
@@ -143,38 +165,7 @@ CountriesVote.propTypes = {
 };
 
 CountriesVote.defaultProps = {
-  countries: [
-    {
-      name: "Spain",
-      votes: 10,
-      exists: true,
-      iso: "ES",
-    },
-    {
-      name: "Mexico",
-      votes: 3,
-      exists: false,
-      iso: "MX",
-    },
-    {
-      name: "Chile",
-      votes: 20,
-      exists: false,
-      iso: "CL",
-    },
-    {
-      name: "Argentina",
-      votes: 7,
-      exists: false,
-      iso: "AR",
-    },
-    {
-      name: "Cuba",
-      votes: 13,
-      exists: false,
-      iso: "CU",
-    },
-  ],
+  countries: [],
 };
 
 export default CountriesVote;

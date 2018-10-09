@@ -11,6 +11,10 @@ const selectStyles = {
   valueContainer: base => ({
     ...base,
   }),
+  singleValue: base => ({
+    ...base,
+    padding: "10px 0",
+  }),
   container: base => ({
     ...base,
     margin: "auto -15px",

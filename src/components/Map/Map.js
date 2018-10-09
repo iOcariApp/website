@@ -81,10 +81,21 @@ class Map extends React.Component {
     shouldUpdate: false,
   };
 
+  componentDidUpdate = prevProps => {
+    if (prevProps.countries.length !== this.props.countries.length) {
+      this.updateMapVisuals();
+    }
+  };
+
   onClick = name => {
     const { vote } = this.props;
 
     vote(name);
+
+    this.updateMapVisuals();
+  };
+
+  updateMapVisuals = () => {
     this.setState(
       {
         shouldUpdate: true,
